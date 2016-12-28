@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Discord\Voice\VoiceClient | DiscordPHP</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Discord_Voice_VoiceClient" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">DiscordPHP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../Discord.html">Discord</a></li>
+                                        <li><a href="../../Discord/Voice.html">Voice</a></li>
+    
+                <li>VoiceClient</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            VoiceClient
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>VoiceClient</strong>        extends <abbr title="Evenement\EventEmitter">EventEmitter</abbr>        (<a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php">View source</a>)
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>The Discord voice client.</p>                    </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>DCA_VERSION</td>
+                <td class="last">
+                    <p><em>The DCA version the client is using.</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_client">
+                                                                                <abbr title="React\Datagram\Socket">Socket</abbr>
+                </td>
+                <td>$client</td>
+                <td class="last">The UDP client.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_ssrc">
+                                                                                int
+                </td>
+                <td>$ssrc</td>
+                <td class="last">The SSRC value.</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<abbr title="Ratchet\Client\WebSocket">WebSocket</abbr> $websocket, <abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop, <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, <a href="../../Discord/Wrapper/LoggerWrapper.html"><abbr title="Discord\Wrapper\LoggerWrapper">LoggerWrapper</abbr></a> $logger, array $data)
+        
+                                            <p>Constructs the Voice Client instance.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_start">start</a>()
+        
+                                            <p>Starts the voice client.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_initSockets">initSockets</a>()
+        
+                                            <p>Initilizes the WebSocket and UDP socket.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_handleWebSocketConnection">handleWebSocketConnection</a>(<abbr title="Ratchet\Client\WebSocket">WebSocket</abbr> $ws)
+        
+                                            <p>Handles a WebSocket connection.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_handleWebSocketError">handleWebSocketError</a>(<a target="_blank" href="http://php.net/Exception">Exception</a> $e)
+        
+                                            <p>Handles a WebSocket error.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_handleVoiceServerChange">handleVoiceServerChange</a>(array $data = array())
+        
+                                            <p>Handles a voice server change.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_playFile">playFile</a>(string $file, int $channels = 2)
+        
+                                            <p>Plays a file on the voice stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_playRawStream">playRawStream</a>(resource|<abbr title="React\Stream\Stream">Stream</abbr> $stream, int $channels = 2)
+        
+                                            <p>Plays a raw PCM16 stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_playDCAStream">playDCAStream</a>(resource|<a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>|<abbr title="React\Stream\Stream">Stream</abbr> $stream)
+        
+                                            <p>Plays a DCA stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sendBuffer">sendBuffer</a>(string $data)
+        
+                                            <p>Sends a buffer to the UDP socket.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSpeaking">setSpeaking</a>(bool $speaking = true)
+        
+                                            <p>Sets the speaking value of the client.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_switchChannel">switchChannel</a>(<a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel)
+        
+                                            <p>Switches voice channels.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setFrameSize">setFrameSize</a>(int $fs)
+        
+                                            <p>Sets the frame size.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBitrate">setBitrate</a>(int $bitrate)
+        
+                                            <p>Sets the bitrate.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setVolume">setVolume</a>(int $volume)
+        
+                                            <p>Sets the volume.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setAudioApplication">setAudioApplication</a>(string $app)
+        
+                                            <p>Sets the audio application.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_send">send</a>(array $data)
+        
+                                            <p>Sends a message to the voice websocket.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_mainSend">mainSend</a>(array $data)
+        
+                                            <p>Sends a message to the main websocket.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMuteDeaf">setMuteDeaf</a>(bool $mute, bool $deaf)
+        
+                                            <p>Changes your mute and deaf value.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_pause">pause</a>()
+        
+                                            <p>Pauses the current sound.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unpause">unpause</a>()
+        
+                                            <p>Unpauses the current sound.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_stop">stop</a>()
+        
+                                            <p>Stops the current sound.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_close">close</a>()
+        
+                                            <p>Closes the voice client.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isSpeaking">isSpeaking</a>(int $id)
+        
+                                            <p>Checks if the user is speaking.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_handleVoiceStateUpdate">handleVoiceStateUpdate</a>(object $data)
+        
+                                            <p>Handles a voice state update.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Discord\Voice\React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRecieveStream">getRecieveStream</a>(int|string $id)
+        
+                                            <p>Gets a recieve voice stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isReady">isReady</a>()
+        
+                                            <p>Returns whether the voice client is ready.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkForFFmpeg">checkForFFmpeg</a>()
+        
+                                            <p>Checks if FFmpeg is installed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkForDCA">checkForDCA</a>()
+        
+                                            <p>Checks if DCA is installed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkForLibsodium">checkForLibsodium</a>()
+        
+                                            <p>Checks if libsodium-php is installed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_dcaEncode">dcaEncode</a>(string $filename = &#039;&#039;, int $channels = 2)
+        
+                                            <p>Encodes a file to Opus with DCA.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_dcaDecode">dcaDecode</a>(int $channels = 2, int $frameSize = null)
+        
+                                            <p>Decodes a file from Opus with DCA.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getChannel">getChannel</a>()
+        
+                                            <p>Returns the connected channel.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L312">line 312</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<abbr title="Ratchet\Client\WebSocket">WebSocket</abbr> $websocket, <abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop, <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, <a href="../../Discord/Wrapper/LoggerWrapper.html"><abbr title="Discord\Wrapper\LoggerWrapper">LoggerWrapper</abbr></a> $logger, array $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs the Voice Client instance.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Ratchet\Client\WebSocket">WebSocket</abbr></td>
+                <td>$websocket</td>
+                <td>The main WebSocket client.</td>
+            </tr>
+                    <tr>
+                <td><abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr></td>
+                <td>$loop</td>
+                <td>The ReactPHP event loop.</td>
+            </tr>
+                    <tr>
+                <td><a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a></td>
+                <td>$channel</td>
+                <td>The channel we are connecting to.</td>
+            </tr>
+                    <tr>
+                <td><a href="../../Discord/Wrapper/LoggerWrapper.html"><abbr title="Discord\Wrapper\LoggerWrapper">LoggerWrapper</abbr></a></td>
+                <td>$logger</td>
+                <td>The logger.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>More information related to the voice client.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L330">line 330</a></div>
+        <code>                    void
+    <strong>start</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Starts the voice client.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initSockets">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L353">line 353</a></div>
+        <code>                    void
+    <strong>initSockets</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Initilizes the WebSocket and UDP socket.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleWebSocketConnection">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L370">line 370</a></div>
+        <code>                    void
+    <strong>handleWebSocketConnection</strong>(<abbr title="Ratchet\Client\WebSocket">WebSocket</abbr> $ws)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles a WebSocket connection.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Ratchet\Client\WebSocket">WebSocket</abbr></td>
+                <td>$ws</td>
+                <td>The WebSocket instance.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleWebSocketError">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L560">line 560</a></div>
+        <code>                    void
+    <strong>handleWebSocketError</strong>(<a target="_blank" href="http://php.net/Exception">Exception</a> $e)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles a WebSocket error.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Exception">Exception</a></td>
+                <td>$e</td>
+                <td>The error.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleVoiceServerChange">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L573">line 573</a></div>
+        <code>                    void
+    <strong>handleVoiceServerChange</strong>(array $data = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles a voice server change.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>New voice server information.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_playFile">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L610">line 610</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>playFile</strong>(string $file, int $channels = 2)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Plays a file on the voice stream.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
+                <td>The file to play.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$channels</td>
+                <td>How many audio channels to encode with.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Exceptions/FileNotFoundException.html"><abbr title="Discord\Exceptions\FileNotFoundException">FileNotFoundException</abbr></a></td>
+                <td>Thrown when the file specified could not be found.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_playRawStream">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L642">line 642</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>playRawStream</strong>(resource|<abbr title="React\Stream\Stream">Stream</abbr> $stream, int $channels = 2)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Plays a raw PCM16 stream.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>resource|<abbr title="React\Stream\Stream">Stream</abbr></td>
+                <td>$stream</td>
+                <td>The stream to be encoded and sent.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$channels</td>
+                <td>How many audio channels to encode with.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/RuntimeException">RuntimeException</a></td>
+                <td>Thrown when the stream passed to playRawStream is not a valid resource.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_playDCAStream">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L677">line 677</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>playDCAStream</strong>(resource|<a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>|<abbr title="React\Stream\Stream">Stream</abbr> $stream)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Plays a DCA stream.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>resource|<a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>|<abbr title="React\Stream\Stream">Stream</abbr></td>
+                <td>$stream</td>
+                <td>The DCA stream to be sent.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendBuffer">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L859">line 859</a></div>
+        <code>                    void
+    <strong>sendBuffer</strong>(string $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sends a buffer to the UDP socket.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td>The data to send to the UDP server.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSpeaking">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L880">line 880</a></div>
+        <code>                    bool
+    <strong>setSpeaking</strong>(bool $speaking = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the speaking value of the client.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$speaking</td>
+                <td>Whether the client is speaking or not.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether the client is speaking or not.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_switchChannel">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L918">line 918</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>switchChannel</strong>(<a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Switches voice channels.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a></td>
+                <td>$channel</td>
+                <td>The channel to switch to.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFrameSize">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L957">line 957</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>setFrameSize</strong>(int $fs)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the frame size.</p>                    <p>Options (in ms):
+- 20
+- 40
+- 60</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$fs</td>
+                <td>The frame size to set.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBitrate">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L989">line 989</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>setBitrate</strong>(int $bitrate)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the bitrate.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$bitrate</td>
+                <td>The bitrate to set.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setVolume">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1019">line 1019</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>setVolume</strong>(int $volume)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the volume.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$volume</td>
+                <td>The volume to set.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAudioApplication">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1049">line 1049</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>setAudioApplication</strong>(string $app)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the audio application.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$app</td>
+                <td>The audio application to set.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_send">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1081">line 1081</a></div>
+        <code>                    void
+    <strong>send</strong>(array $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sends a message to the voice websocket.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>The data to send to the voice WebSocket.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mainSend">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1094">line 1094</a></div>
+        <code>                    void
+    <strong>mainSend</strong>(array $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sends a message to the main websocket.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>The data to send to the main WebSocket.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMuteDeaf">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1108">line 1108</a></div>
+        <code>                    void
+    <strong>setMuteDeaf</strong>(bool $mute, bool $deaf)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Changes your mute and deaf value.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$mute</td>
+                <td>Whether you should be muted.</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$deaf</td>
+                <td>Whether you should be deaf.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pause">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1147">line 1147</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>pause</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Pauses the current sound.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unpause">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1168">line 1168</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>unpause</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unpauses the current sound.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stop">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1190">line 1190</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>stop</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Stops the current sound.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1218">line 1218</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Closes the voice client.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isSpeaking">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1271">line 1271</a></div>
+        <code>                    bool
+    <strong>isSpeaking</strong>(int $id)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the user is speaking.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$id</td>
+                <td>Either the User ID or SSRC.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether the user is speaking.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleVoiceStateUpdate">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1294">line 1294</a></div>
+        <code>                    void
+    <strong>handleVoiceStateUpdate</strong>(object $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles a voice state update.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$data</td>
+                <td>The WebSocket data.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRecieveStream">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1328">line 1328</a></div>
+        <code>                    <abbr title="Discord\Voice\React\Promise\Promise">Promise</abbr>
+    <strong>getRecieveStream</strong>(int|string $id)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets a recieve voice stream.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|string</td>
+                <td>$id</td>
+                <td>Either a SSRC or User ID.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Discord\Voice\React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isReady">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1433">line 1433</a></div>
+        <code>                    bool
+    <strong>isReady</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns whether the voice client is ready.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether the voice client is ready.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkForFFmpeg">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1445">line 1445</a></div>
+        <code>                    bool
+    <strong>checkForFFmpeg</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if FFmpeg is installed.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether FFmpeg is installed or not.</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Exceptions/FFmpegNotFoundException.html"><abbr title="Discord\Exceptions\FFmpegNotFoundException">FFmpegNotFoundException</abbr></a></td>
+                <td>Thrown when FFmpeg is not found.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkForDCA">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1471">line 1471</a></div>
+        <code>                    bool
+    <strong>checkForDCA</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if DCA is installed.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether DCA is installed or not.</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Exceptions/DCANotFoundException.html"><abbr title="Discord\Exceptions\DCANotFoundException">DCANotFoundException</abbr></a></td>
+                <td>Thrown when DCA is not found.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkForLibsodium">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1502">line 1502</a></div>
+        <code>                    
+    <strong>checkForLibsodium</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if libsodium-php is installed.</p>                                </div>
+                <div class="tags">
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Exceptions/LibSodiumNotFoundException.html"><abbr title="Discord\Exceptions\LibSodiumNotFoundException">LibSodiumNotFoundException</abbr></a></td>
+                <td>Thrown when libsodium-php is not found.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dcaEncode">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1521">line 1521</a></div>
+        <code>                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+    <strong>dcaEncode</strong>(string $filename = &#039;&#039;, int $channels = 2)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Encodes a file to Opus with DCA.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$filename</td>
+                <td>The file name that will be encoded.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$channels</td>
+                <td>How many audio channels to encode with.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a></td>
+            <td>A ReactPHP Child Process</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dcaDecode">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1549">line 1549</a></div>
+        <code>                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+    <strong>dcaDecode</strong>(int $channels = 2, int $frameSize = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Decodes a file from Opus with DCA.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$channels</td>
+                <td>How many audio channels to decode with.</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$frameSize</td>
+                <td>The Opus packet frame size.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a></td>
+            <td>A ReactPHP Child Process</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getChannel">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Voice/VoiceClient.php#L1572">line 1572</a></div>
+        <code>                    <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a>
+    <strong>getChannel</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the connected channel.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a></td>
+            <td>The connected channel.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

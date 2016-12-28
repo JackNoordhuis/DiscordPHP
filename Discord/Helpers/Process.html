@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Discord\Helpers\Process | DiscordPHP</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Discord_Helpers_Process" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">DiscordPHP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../Discord.html">Discord</a></li>
+                                        <li><a href="../../Discord/Helpers.html">Helpers</a></li>
+    
+                <li>Process</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Process
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Process</strong>        extends <abbr title="Evenement\EventEmitter">EventEmitter</abbr>        (<a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php">View source</a>)
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Process component.</p>            <p>This class borrows logic from Symfony's Process component for ensuring
+compatibility when PHP is compiled with the --enable-sigchild option.</p>
+
+<p>Based off ReactPHP Child Process. Thanks to the crew over at ReactPHP!</p>        </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_stdin">
+                                                                                
+                </td>
+                <td>$stdin</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_stdout">
+                                                                                
+                </td>
+                <td>$stdout</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_stderr">
+                                                                                
+                </td>
+                <td>$stderr</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $cmd, string $cwd = null, array $env = null, array $options = array())
+        
+                                            <p>Constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_start">start</a>(<abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop, float $interval = 0.1)
+        
+                                            <p>Start the process.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_close">close</a>()
+        
+                                            <p>Close the process.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_terminate">terminate</a>(int $signal = null)
+        
+                                            <p>Terminate the process with an optional signal.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCommand">getCommand</a>()
+        
+                                            <p>Get the command string used to launch the process.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getEnhanceSigchildCompatibility">getEnhanceSigchildCompatibility</a>()
+        
+                                            <p>Return whether sigchild compatibility is enabled.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEnhanceSigchildCompatibility">setEnhanceSigchildCompatibility</a>(bool $enhance)
+        
+                                            <p>Enable or disable sigchild compatibility mode.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getExitCode">getExitCode</a>()
+        
+                                            <p>Get the exit code returned by the process.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPid">getPid</a>()
+        
+                                            <p>Get the process ID.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStopSignal">getStopSignal</a>()
+        
+                                            <p>Get the signal that caused the process to stop its execution.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTermSignal">getTermSignal</a>()
+        
+                                            <p>Get the signal that caused the process to terminate its execution.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isRunning">isRunning</a>()
+        
+                                            <p>Return whether the process is still running.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isStopped">isStopped</a>()
+        
+                                            <p>Return whether the process has been stopped by a signal.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isTerminated">isTerminated</a>()
+        
+                                            <p>Return whether the process has been terminated by an uncaught signal.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isSigchildEnabled">isSigchildEnabled</a>()
+        
+                                            <p>Return whether PHP has been compiled with the '--enable-sigchild' option.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L61">line 61</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $cmd, string $cwd = null, array $env = null, array $options = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cmd</td>
+                <td>Command line to run</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cwd</td>
+                <td>Current working directory or null to inherit</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$env</td>
+                <td>Environment variables or null to inherit</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>Options for proc_open()</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Discord\Helpers\RuntimeException">RuntimeException</abbr></td>
+                <td>When proc_open() is not installed</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L92">line 92</a></div>
+        <code>                    
+    <strong>start</strong>(<abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop, float $interval = 0.1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Start the process.</p>                    <p>After the process is started, the standard IO streams will be constructed
+and available via public properties. STDIN will be paused upon creation.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr></td>
+                <td>$loop</td>
+                <td>Loop interface for stream construction</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$interval</td>
+                <td>Interval to periodically monitor process state (seconds)</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Discord\Helpers\RuntimeException">RuntimeException</abbr></td>
+                <td>If the process is already running or fails to start</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L141">line 141</a></div>
+        <code>                    
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close the process.</p>                    <p>This method should only be invoked via the periodic timer that monitors
+the process state.</p>            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_terminate">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L181">line 181</a></div>
+        <code>                    bool
+    <strong>terminate</strong>(int $signal = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Terminate the process with an optional signal.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$signal</td>
+                <td>Optional signal (default: SIGTERM)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Whether the signal was sent successfully</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCommand">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L195">line 195</a></div>
+        <code>                    string
+    <strong>getCommand</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the command string used to launch the process.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEnhanceSigchildCompatibility">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L205">line 205</a></div>
+        <code>final                    bool
+    <strong>getEnhanceSigchildCompatibility</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return whether sigchild compatibility is enabled.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEnhanceSigchildCompatibility">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L223">line 223</a></div>
+        <code>final                    <a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a>
+    <strong>setEnhanceSigchildCompatibility</strong>(bool $enhance)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Enable or disable sigchild compatibility mode.</p>                    <p>Sigchild compatibility mode is required to get the exit code and
+determine the success of a process when PHP has been compiled with
+the --enable-sigchild option.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$enhance</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Discord/Helpers/Process.html"><abbr title="Discord\Helpers\Process">Process</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Discord\Helpers\RuntimeException">RuntimeException</abbr></td>
+                <td>If the process is already running</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getExitCode">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L245">line 245</a></div>
+        <code>                    int|null
+    <strong>getExitCode</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the exit code returned by the process.</p>                    <p>This value is only meaningful if isRunning() has returned false. Null
+will be returned if the process is still running.</p>
+
+<p>Null may also be returned if the process has terminated, but the exit
+code could not be determined (e.g. sigchild compatibility was disabled).</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPid">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L255">line 255</a></div>
+        <code>                    int|null
+    <strong>getPid</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the process ID.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStopSignal">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L270">line 270</a></div>
+        <code>                    int|null
+    <strong>getStopSignal</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the signal that caused the process to stop its execution.</p>                    <p>This value is only meaningful if isStopped() has returned true. Null will
+be returned if the process was never stopped.</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTermSignal">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L283">line 283</a></div>
+        <code>                    int|null
+    <strong>getTermSignal</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the signal that caused the process to terminate its execution.</p>                    <p>This value is only meaningful if isTerminated() has returned true. Null
+will be returned if the process was never terminated.</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRunning">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L293">line 293</a></div>
+        <code>                    bool
+    <strong>isRunning</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return whether the process is still running.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isStopped">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L309">line 309</a></div>
+        <code>                    bool
+    <strong>isStopped</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return whether the process has been stopped by a signal.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isTerminated">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L321">line 321</a></div>
+        <code>                    bool
+    <strong>isTerminated</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return whether the process has been terminated by an uncaught signal.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isSigchildEnabled">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Helpers/Process.php#L335">line 335</a></div>
+        <code>final        static            bool
+    <strong>isSigchildEnabled</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return whether PHP has been compiled with the '--enable-sigchild' option.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>\Symfony\Component\Process\Process::isSigchildEnabled()</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

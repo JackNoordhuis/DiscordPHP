@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Discord\Http\Http | DiscordPHP</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Discord_Http_Http" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">DiscordPHP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../Discord.html">Discord</a></li>
+                                        <li><a href="../../Discord/Http.html">Http</a></li>
+    
+                <li>Http</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Http
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Http</strong>        (<a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php">View source</a>)
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Provides an easy wrapper for HTTP requests, allows for interchangable connectors.</p>                    </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>BASE_URL</td>
+                <td class="last">
+                    <p><em>The Base URL of the API.</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CACHE_TTL</td>
+                <td class="last">
+                    <p><em>The length of time requests will be cached for.</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, string $token, string $version, <a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a> $driver = null)
+        
+                                            <p>Guzzle constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setDriver">setDriver</a>(<a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a> $driver)
+        
+                                            <p>Sets the HTTP driver.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___call">__call</a>(string $name, array $params)
+        
+                                            <p>Handles dynamic calls to the class.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sendFile">sendFile</a>(<a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, string $filepath, string $filename, string $content, bool $tts)
+        
+                                            <p>Uploads a file to a channel.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Discord/Exceptions/DiscordRequestFailedException.html"><abbr title="Discord\Exceptions\DiscordRequestFailedException">DiscordRequestFailedException</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_handleError">handleError</a>(int $errorCode, string|<abbr title="GuzzleHttp\Psr7\Response">Response</abbr> $message, string $content, string $url)
+        
+                                            <p>Handles an error code.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserAgent">getUserAgent</a>()
+        
+                                            <p>Returns the User-Agent of the API.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L75">line 75</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, string $token, string $version, <a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a> $driver = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Guzzle constructor.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a></td>
+                <td>$cache</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$token</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$version</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a></td>
+                <td>$driver</td>
+                <td>The request driver.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDriver">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L94">line 94</a></div>
+        <code>                    void
+    <strong>setDriver</strong>(<a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a> $driver)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the HTTP driver.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a></td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L109">line 109</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>__call</strong>(string $name, array $params)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles dynamic calls to the class.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>The endpoint that will be queried.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td>Parameters that will be encoded into JSON and sent with the request.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>\Discord\Helpers\Guzzle::runRequest()</td>
+                <td>This function will be forwareded onto runRequest.</td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendFile">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L221">line 221</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>sendFile</strong>(<a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, string $filepath, string $filename, string $content, bool $tts)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Uploads a file to a channel.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a></td>
+                <td>$channel</td>
+                <td>The channel to send to.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filepath</td>
+                <td>The path to the file.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filename</td>
+                <td>The name to upload the file as.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td>Extra text content to go with the file.</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$tts</td>
+                <td>Whether the message should be TTS.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleError">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L265">line 265</a></div>
+        <code>                    <a href="../../Discord/Exceptions/DiscordRequestFailedException.html"><abbr title="Discord\Exceptions\DiscordRequestFailedException">DiscordRequestFailedException</abbr></a>
+    <strong>handleError</strong>(int $errorCode, string|<abbr title="GuzzleHttp\Psr7\Response">Response</abbr> $message, string $content, string $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles an error code.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$errorCode</td>
+                <td>The HTTP status code.</td>
+            </tr>
+                    <tr>
+                <td>string|<abbr title="GuzzleHttp\Psr7\Response">Response</abbr></td>
+                <td>$message</td>
+                <td>The HTTP reason phrase.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td>The HTTP response content.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td>The HTTP url.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Discord/Exceptions/DiscordRequestFailedException.html"><abbr title="Discord\Exceptions\DiscordRequestFailedException">DiscordRequestFailedException</abbr></a></td>
+            <td>Returned when the request fails.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserAgent">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Http.php#L312">line 312</a></div>
+        <code>                    string
+    <strong>getUserAgent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the User-Agent of the API.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

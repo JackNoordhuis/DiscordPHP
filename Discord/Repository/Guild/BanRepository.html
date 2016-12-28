@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Discord\Repository\Guild\BanRepository | DiscordPHP</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Discord_Repository_Guild_BanRepository" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">DiscordPHP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../Discord.html">Discord</a></li>
+                                        <li><a href="../../../Discord/Repository.html">Repository</a></li>
+                                        <li><a href="../../../Discord/Repository/Guild.html">Guild</a></li>
+    
+                <li>BanRepository</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            BanRepository
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>BanRepository</strong>        extends <a href="../../../Discord/Repository/AbstractRepository.html"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a>        (<a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/Guild/BanRepository.php">View source</a>)
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Contains bans on users.</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a> $http, <a href="../../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, <a href="../../../Discord/Factory/Factory.html"><abbr title="Discord\Factory\Factory">Factory</abbr></a> $factory, array $vars = array())
+        
+                                            <p>AbstractRepository constructor.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method___construct"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_freshen">freshen</a>()
+        
+                                            <p>Freshens the repository collection.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_freshen"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>(array $attributes = array())
+        
+                                            <p>Builds a new, empty part.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_create"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_save">save</a>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        
+                                            <p>Attempts to save a part to the Discord servers.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_save"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        
+                                            <p>Attempts to delete a part on the Discord servers.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_delete"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fresh">fresh</a>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        
+                                            <p>Returns a part with fresh values.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_fresh"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetch">fetch</a>(string $id)
+        
+                                            <p>Force gets a part from the Discord servers.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_fetch"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_count">count</a>()
+        
+                                            <p>Returns how many items are in the repository.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_count"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIterator">getIterator</a>()
+        
+                                            <p>Get an iterator for the items.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_getIterator"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $key)
+        
+                                            <p>Determine if an item exists at an offset.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_offsetExists"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetGet">offsetGet</a>(mixed $key)
+        
+                                            <p>Get an item at a given offset.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_offsetGet"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetSet">offsetSet</a>(mixed $key, mixed $value)
+        
+                                            <p>Set the item at a given offset.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_offsetSet"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetUnset">offsetUnset</a>(string $key)
+        
+                                            <p>Unset the item at a given offset.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_offsetUnset"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+        
+                                            <p>Convert the object into something JSON serializable.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method_jsonSerialize"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___debugInfo">__debugInfo</a>()
+        
+                                            <p>Handles debug calls from var_dump and similar functions.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method___debugInfo"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___call">__call</a>(string $function, array $params)
+        
+                                            <p>Handles dynamic calls to the repository.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Discord/Repository/AbstractRepository.html#method___call"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a></small></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method___construct"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L95">line 95</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a> $http, <a href="../../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, <a href="../../../Discord/Factory/Factory.html"><abbr title="Discord\Factory\Factory">Factory</abbr></a> $factory, array $vars = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>AbstractRepository constructor.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a></td>
+                <td>$http</td>
+                <td>The HTTP client.</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a></td>
+                <td>$cache</td>
+                <td>The cache wrapper.</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Discord/Factory/Factory.html"><abbr title="Discord\Factory\Factory">Factory</abbr></a></td>
+                <td>$factory</td>
+                <td>The parts factory.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$vars</td>
+                <td>An array of variables used for the endpoint.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_freshen">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_freshen"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L109">line 109</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>freshen</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Freshens the repository collection.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_create"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L138">line 138</a></div>
+        <code>                    <a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a>
+    <strong>create</strong>(array $attributes = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Builds a new, empty part.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td>The attributes for the new part.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a></td>
+            <td>The new part.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_save">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_save"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L148">line 148</a></div>
+        <code>                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+    <strong>save</strong>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Attempts to save a part to the Discord servers.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a></td>
+                <td>$part</td>
+                <td>The part to save.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_delete"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L190">line 190</a></div>
+        <code>                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+    <strong>delete</strong>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Attempts to delete a part on the Discord servers.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a></td>
+                <td>$part</td>
+                <td>The part to delete.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fresh">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_fresh"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L222">line 222</a></div>
+        <code>                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+    <strong>fresh</strong>(<a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a> $part)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a part with fresh values.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Discord/Parts/Part.html"><abbr title="Discord\Parts\Part">Part</abbr></a></td>
+                <td>$part</td>
+                <td>The part to get fresh values.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_fetch"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L254">line 254</a></div>
+        <code>                    <abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr>
+    <strong>fetch</strong>(string $id)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Force gets a part from the Discord servers.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td>The ID to search for.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\PromiseInterface">PromiseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_count"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L311">line 311</a></div>
+        <code>                    int
+    <strong>count</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns how many items are in the repository.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>Count.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIterator">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_getIterator"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L321">line 321</a></div>
+        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+    <strong>getIterator</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get an iterator for the items.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetExists">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_offsetExists"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L333">line 333</a></div>
+        <code>                    bool
+    <strong>offsetExists</strong>(mixed $key)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determine if an item exists at an offset.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetGet">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_offsetGet"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L345">line 345</a></div>
+        <code>                    mixed
+    <strong>offsetGet</strong>(mixed $key)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get an item at a given offset.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetSet">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_offsetSet"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L358">line 358</a></div>
+        <code>                    void
+    <strong>offsetSet</strong>(mixed $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set the item at a given offset.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetUnset">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_offsetUnset"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L370">line 370</a></div>
+        <code>                    void
+    <strong>offsetUnset</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unset the item at a given offset.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_jsonSerialize">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method_jsonSerialize"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L380">line 380</a></div>
+        <code>                    array
+    <strong>jsonSerialize</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Convert the object into something JSON serializable.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___debugInfo">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method___debugInfo"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L390">line 390</a></div>
+        <code>                    array
+    <strong>__debugInfo</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles debug calls from var_dump and similar functions.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>An array of attributes.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location">in <a href="../../../Discord/Repository/AbstractRepository.html#method___call"><abbr title="Discord\Repository\AbstractRepository">AbstractRepository</abbr></a> at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Repository/AbstractRepository.php#L403">line 403</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $function, array $params)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Handles dynamic calls to the repository.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$function</td>
+                <td>The function called.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td>Array of parameters.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

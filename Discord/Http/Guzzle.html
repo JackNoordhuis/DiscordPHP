@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Discord\Http\Guzzle | DiscordPHP</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Discord_Http_Guzzle" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">DiscordPHP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../Discord.html">Discord</a></li>
+                                        <li><a href="../../Discord/Http.html">Http</a></li>
+    
+                <li>Guzzle</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Guzzle
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Guzzle</strong>        extends <abbr title="GuzzleHttp\Client">Client</abbr>        implements
+        <a href="../../Discord/Http/HttpDriver.html"><abbr title="Discord\Http\HttpDriver">HttpDriver</abbr></a>        (<a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Guzzle.php">View source</a>)
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>The Guzzle PHP library driver for the HTTP client.</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, <abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop)
+        
+                                            <p>Constructs a Guzzle driver.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="React\Promise\Promise">Promise</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_runRequest">runRequest</a>(string $method, string $url, array $headers, string $body, array $options = array())
+        
+                                            <p>Runs an HTTP request.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sendFile">sendFile</a>(<a href="../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a> $http, <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, $filepath, $filename, $content, $tts, $token)
+        
+                                            <p>{@inheritdoc}</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_blocking">blocking</a>($method, $url, $headers, $body)
+        
+                                            <p>{@inheritdoc}</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Guzzle.php#L82">line 82</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a> $cache, <abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr> $loop)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a Guzzle driver.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Wrapper/CacheWrapper.html"><abbr title="Discord\Wrapper\CacheWrapper">CacheWrapper</abbr></a></td>
+                <td>$cache</td>
+                <td>The cache wrapper.</td>
+            </tr>
+                    <tr>
+                <td><abbr title="React\EventLoop\LoopInterface">LoopInterface</abbr></td>
+                <td>$loop</td>
+                <td>The ReactPHP event loop.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runRequest">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Guzzle.php#L98">line 98</a></div>
+        <code>                    <abbr title="React\Promise\Promise">Promise</abbr>
+    <strong>runRequest</strong>(string $method, string $url, array $headers, string $body, array $options = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Runs an HTTP request.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td>The HTTP method to use.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td>The endpoint that will be queried.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$headers</td>
+                <td>The headers to send in the request.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$body</td>
+                <td>The request content.</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>An array of Guzzle options.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="React\Promise\Promise">Promise</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendFile">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Guzzle.php#L193">line 193</a></div>
+        <code>                    
+    <strong>sendFile</strong>(<a href="../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a> $http, <a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a> $channel, $filepath, $filename, $content, $tts, $token)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>{@inheritdoc}</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Discord/Http/Http.html"><abbr title="Discord\Http\Http">Http</abbr></a></td>
+                <td>$http</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Discord/Parts/Channel/Channel.html"><abbr title="Discord\Parts\Channel\Channel">Channel</abbr></a></td>
+                <td>$channel</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$filepath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$filename</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$tts</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$token</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_blocking">
+        <div class="location">at line         <a href="https://github.com/team-reflex/discord-php/blob/master/DiscordPHP/src/Discord/Http/Guzzle.php#L228">line 228</a></div>
+        <code>                    
+    <strong>blocking</strong>($method, $url, $headers, $body)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>{@inheritdoc}</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$headers</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$body</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
