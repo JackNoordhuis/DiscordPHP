@@ -1,8 +1,12 @@
 {
-  "name": "team-reflex/discord-php",
-  "description": "An unofficial API to interact with the voice and text service Discord.",
+  "name": "jacknoordhuis/discord-php",
+  "description": "An unofficial library to interact with the Discord gateway API.",
   "license": "MIT",
   "authors": [
+    {
+      "name": "Jack Noordhuis",
+      "email": "jack@crazedcraftmc.net"
+    },
     {
       "name": "David Cole",
       "email": "david@team-reflex.com"
@@ -13,7 +17,7 @@
     }
   ],
   "require": {
-    "php": "^5.6|^7.0",
+    "php": "^7.0",
     "cache/array-adapter": "^0.4.0",
     "guzzlehttp/guzzle": "~5.3|~6.0",
     "illuminate/support": "^4.0|^5.0",
