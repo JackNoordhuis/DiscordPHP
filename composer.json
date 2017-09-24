@@ -1,53 +1,21 @@
 {
   "name": "jacknoordhuis/discord-php",
   "description": "An unofficial library to interact with the Discord gateway API.",
-  "license": "MIT",
+  "license": "GPL v3",
   "authors": [
     {
       "name": "Jack Noordhuis",
       "email": "jack@crazedcraftmc.net"
-    },
-    {
-      "name": "David Cole",
-      "email": "david@team-reflex.com"
-    },
-    {
-      "name": "Aaron Scherer",
-      "email": "aequasi@gmail.com"
     }
   ],
   "require": {
     "php": "^7.0",
-    "cache/array-adapter": "^0.4.0",
-    "guzzlehttp/guzzle": "~5.3|~6.0",
-    "illuminate/support": "^4.0|^5.0",
-    "nesbot/carbon": "^1.18",
-    "ratchet/pawl": "0.2.*",
-    "react/datagram": "1.1.*",
-    "react/socket-client": "0.4.*",
-    "symfony/options-resolver": "^2.7|^3.0",
-    "TrafficCophp/ByteBuffer": "^0.3",
-    "monolog/monolog": "^1.19",
-    "wyrihaximus/react-guzzle-psr7": "^1.0",
-    "react/partial": "^2.0"
-  },
-  "require-dev": {
-    "symfony/var-dumper": "^2.7|^3.0"
+    "monolog/monolog": "^1.19"
   },
   "autoload": {
-    "files": ["src/discord/functions.php"],
     "psr-4": {
-      "Discord\\": "src/discord"
+      "discord\\": "src/discord"
     }
-  },
-  "suggest": {
-    "cache/apc-adapter": "Required to use the APC cache driver",
-    "cache/memcache-adapter": "Required to use the Memcache cache driver",
-    "cache/memcached-adapter": "Required to use the Memcached cache driver",
-    "cache/redis-adapter": "Required to use the Redis cache driver",
-    "ext-libevent": "For a faster, and more performant loop. Preferred",
-    "ext-libev": "For a faster, and more performant loop",
-    "ext-event": "For a faster, and more performant loop"
   },
   "scripts": {}
 }

@@ -1,6 +1,5 @@
 DiscordPHP
 ====
-[![Build Status](https://travis-ci.org/teamreflex/DiscordPHP.svg?branch=master)](https://travis-ci.org/teamreflex/DiscordPHP) [![Discord Chat](https://img.shields.io/badge/chat-Discord%20API-blue.svg)](https://discord.gg/0SBTUU1wZTX4Mjwn) [![PHP Discorders](https://img.shields.io/badge/chat-PHP%20Discord-blue.svg)](https://discord.gg/0duG4FF1ElFGUFVq)
 
 An unofficial library to interact with the Discord gateway API (continuation of [DiscordPHP](https://github.com/teamreflex/DiscordPHP)).
 
@@ -13,14 +12,13 @@ An unofficial library to interact with the Discord gateway API (continuation of 
 
 ### Installing DiscordPHP
 
-DiscordPHP is installed using [Composer](https://getcomposer.org). Make sure you have installed Composer and are used to how it operates. We require a minimum PHP version of PHP 5.5.9, however it is reccomended that you use PHP 7. PHP 5.x support **will** be removed in the future.
+DiscordPHP is installed using [Composer](https://getcomposer.org). Make sure you have installed Composer and are used to how it operates. This project requires PHP 7.0.
 
 This library has not been tested with HHVM.
 
-1. Run `composer require team-reflex/discord-php`. This will install the lastest release.
-	- If you would like, you can also install the development branch by running `composer require team-reflex/discord-php dev-develop`.
+1. Run `composer require jacknoordhuis/discord-php`. This will install the latest release.
 2. Include the Composer autoload file at the top of your main file:
-	- `include __DIR__.'/vendor/autoload.php';`
+	- `include __DIR__ . "/vendor/autoload.php";`
 3. Make a bot!
 
 ### Basic Example
@@ -28,24 +26,24 @@ This library has not been tested with HHVM.
 ```php
 <?php
 
-include __DIR__.'/vendor/autoload.php';
+include __DIR__ . "/vendor/autoload.php";
 
-use Discord\Discord;
+use discord\DiscordClient;
 
-$discord = new Discord([
-	'token' => 'bot-token',
+$client = new DiscordClient([
+	"token" => "bot-token",
 ]);
 
-$discord->on('ready', function ($discord) {
+$client->on("ready", function ($client) {
 	echo "Bot is ready!", PHP_EOL;
 
 	// Listen for messages.
-	$discord->on('message', function ($message, $discord) {
+	$client->on("message", function ($message, $client) {
 		echo "{$message->author->username}: {$message->content}",PHP_EOL;
 	});
 });
 
-$discord->run();
+$client->run();
 ```
 
 ## Notes
@@ -54,12 +52,26 @@ $discord->run();
 
 ## Documentation
 
-Raw documentation can be found in-line in the code and on the [DiscordPHP Class Reference](http://teamreflex.github.io/DiscordPHP/). More user friendly and examples will soon be coming on the [DiscordPHP Wiki](https://discordphp.readme.io/).
+Raw documentation can be found in-line in the code and on the [DiscordPHP Class Reference](http://JackNoordhuis.github.io/DiscordPHP/).
 
 ## Contributing
 
-We are open to contributions. However, please make sure you follow our coding standards (PSR-4 autoloading and custom styling). We use StyleCI to format our code. Our StyleCI settings can be found [here](https://github.com/teamreflex/DiscordPHP/wiki/StyleCI).
+We are open to contributions. However, please make sure you follow our coding standards (PSR-4 autoloading and custom styling).
 
-## Library Comparison
+## License
 
-See [this chart](https://abal.moe/Discord/Libraries.html) for a feature comparison and list of other Discord API libraries.
+The content of this repo is licensed under the GNU Lesser General Public License (GPL) v3. A full copy of the license
+is available [here](LICENSE).
+
+>This program is free software: you can redistribute it and/or modify<br/>
+>it under the terms of the GNU General Public License as published by<br/>
+>the Free Software Foundation, either version 3 of the License, or<br/>
+>(at your option) any later version.<br/>
+>
+>This program is distributed in the hope that it will be useful,<br/>
+>but WITHOUT ANY WARRANTY; without even the implied warranty of<br/>
+>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br/>
+>GNU General Public License for more details.<br/>
+>
+>You should have received a copy of the GNU General Public License<br/>
+>along with this program.  If not, see http://www.gnu.org/licenses/
