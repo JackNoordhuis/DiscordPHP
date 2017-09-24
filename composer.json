@@ -35,9 +35,9 @@
     "symfony/var-dumper": "^2.7|^3.0"
   },
   "autoload": {
-    "files": ["src/Discord/functions.php"],
+    "files": ["src/discord/functions.php"],
     "psr-4": {
-      "Discord\\": "src/Discord"
+      "Discord\\": "src/discord"
     }
   },
   "suggest": {
