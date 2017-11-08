@@ -47,6 +47,10 @@ class DiscordClient {
 	private $clientSocket;
 
 	public function __construct(array $options = []) {
+		if(php_sapi_name() !== "cli") {
+			trigger_error('DiscordPHP will not run on a webserver. Please use PHP CLI to run a DiscordPHP bot.', E_USER_ERROR);
+		}
+
 		OpcodePool::init();
 
 		$this->logger = new LoggerModule($this);
