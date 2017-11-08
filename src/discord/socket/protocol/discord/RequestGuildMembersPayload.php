@@ -16,9 +16,11 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class RequestGuildMembersPayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_GUILD_MEMBER_CHUNK;
+	const OPCODE_ID = OpcodeInfo::OP_REQUEST_GUILD_MEMBERS;
 
 	/** @var string */
 	public $guildId;
@@ -39,6 +41,10 @@ class RequestGuildMembersPayload extends PayloadData {
 		$this->payload->guild_id = $this->guildId;
 		$this->payload->query = $this->query;
 		$this->payload->limit = $this->limit;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleRequestGuildMembers($this);
 	}
 
 }

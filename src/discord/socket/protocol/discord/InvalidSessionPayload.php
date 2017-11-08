@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class InvalidSessionPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_INVALID_SESSION;
@@ -29,6 +31,10 @@ class InvalidSessionPayload extends PayloadData {
 
 	public function pack() {
 		$this->payload->d = $this->payload;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleInvalidSession($this);
 	}
 
 }

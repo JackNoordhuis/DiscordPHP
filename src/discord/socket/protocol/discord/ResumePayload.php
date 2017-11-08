@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class ResumePayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_RESUME;
@@ -39,6 +41,10 @@ class ResumePayload extends PayloadData {
 		$this->payload->token = $this->token;
 		$this->payload->session_id = $this->sessionId;
 		$this->payload->seq = $this->lastSequence;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleResume($this);
 	}
 
 }

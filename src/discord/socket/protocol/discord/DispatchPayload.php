@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class DispatchPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_DISPATCH;
@@ -80,4 +82,9 @@ class DispatchPayload extends PayloadData {
 		$this->payload->s = $this->sequenceNumber;
 		$this->payload->t = $this->eventName;
 	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleDispatch($this);
+	}
+
 }

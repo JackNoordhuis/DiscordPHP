@@ -16,9 +16,11 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class StatusUpdatePayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_PRESENCE_UPDATE;
+	const OPCODE_ID = OpcodeInfo::OP_STATUS_UPDATE;
 
 
 	const STATUS_TYPE_ONLINE = "online";
@@ -52,6 +54,10 @@ class StatusUpdatePayload extends PayloadData {
 		$this->payload->game = $this->game;
 		$this->payload->status = $this->status;
 		$this->payload->afk = $this->afk;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleStatusUpdate($this);
 	}
 
 }

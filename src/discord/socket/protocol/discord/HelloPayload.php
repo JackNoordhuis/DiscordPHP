@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class HelloPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_HELLO;
@@ -27,13 +29,17 @@ class HelloPayload extends PayloadData {
 	public $trace;
 
 	public function unpack() {
-		$this->heartbeatInterval = $this->payload->heartbeat_interval;
-		$this->trace = $this->payload->_trace;
+		$this->heartbeatInterval = $this->payload->d->heartbeat_interval;
+		$this->trace = $this->payload->d->_trace;
 	}
 
 	public function pack() {
-		$this->payload->heartbeat_interval = $this->heartbeatInterval;
-		$this->payload->_trace = $this->trace;
+		$this->payload->d->heartbeat_interval = $this->heartbeatInterval;
+		$this->payload->d->_trace = $this->trace;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleHello($this);
 	}
 
 }

@@ -17,40 +17,40 @@ namespace discord\socket\protocol\discord;
 
 interface OpcodeInfo {
 
-	// Dispatches an event.
+	// Dispatches an event
 	const OP_DISPATCH = 0;
 
-	// Used for ping checking.
+	// Used for ping checking
 	const OP_HEARTBEAT = 1;
 
-	// Used for client handshake.
+	// Used for client handshake
 	const OP_IDENTIFY = 2;
 
-	// Used to update the client presence.
-	const OP_PRESENCE_UPDATE = 3;
+	// Used to update the client presence
+	const OP_STATUS_UPDATE = 3;
 
-	// Used to join/move/leave voice channels.
-	const OP_VOICE_STATE_UPDATE = 4;
+	// Used to join/move/leave voice channels
+	const OP_VOICE_STATUS_UPDATE = 4;
 
-	// Used for voice ping checking.
+	// Used for voice ping checking
 	const OP_VOICE_SERVER_PING = 5;
 
-	// Used to resume a closed connection.
+	// Used to resume a closed connection
 	const OP_RESUME = 6;
 
-	// Used to redirect clients to a new gateway.
+	// Used to redirect clients to a new gateway
 	const OP_RECONNECT = 7;
 
-	// Used to request member chunks.
-	const OP_GUILD_MEMBER_CHUNK = 8;
+	// Used to request member chunks
+	const OP_REQUEST_GUILD_MEMBERS = 8;
 
-	// Used to notify clients when they have an invalid session.
+	// Used to notify clients when they have an invalid session
 	const OP_INVALID_SESSION = 9;
 
 	// Used to pass through the heartbeat interval
 	const OP_HELLO = 10;
 
-	// Used to acknowledge heartbeats.
+	// Used to acknowledge heartbeats
 	const OP_HEARTBEAT_ACK = 11;
 
 }

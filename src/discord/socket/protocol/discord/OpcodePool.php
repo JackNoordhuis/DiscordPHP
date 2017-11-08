@@ -57,7 +57,7 @@ class OpcodePool {
 		$op = static::getOpcodeById($payload->op);
 
 		if($op instanceof PayloadData) {
-			$op->setPayload($payload);
+			return $op->setPayload($payload);
 		}
 
 		return null;

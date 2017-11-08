@@ -16,9 +16,11 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class VoiceStatusUpdatePayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_VOICE_STATE_UPDATE;
+	const OPCODE_ID = OpcodeInfo::OP_VOICE_STATUS_UPDATE;
 
 	/** @var string */
 	public $guildId;
@@ -44,6 +46,10 @@ class VoiceStatusUpdatePayload extends PayloadData {
 		$this->payload->channel_id = $this->channelId;
 		$this->payload->self_mute = $this->muted;
 		$this->payload->self_deaf = $this->deafened;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleVoiceStatusUpdate($this);
 	}
 
 }

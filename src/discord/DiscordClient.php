@@ -18,8 +18,13 @@ namespace discord;
 
 use discord\module\logger\LoggerModule;
 use discord\module\logger\wrappers\MonologWrapper;
-use discord\socket\DiscordClientSocket;
+use discord\socket\DiscordSocketInterface;
+use discord\socket\protocol\discord\HeartbeatPayload;
 use discord\socket\protocol\discord\OpcodePool;
+use discord\socket\protocol\ClientWebSocketSessionAdapter;
+use React\EventLoop\Factory;
+use React\EventLoop\Timer\Timer;
+use React\EventLoop\Timer\TimerInterface;
 
 /**
  * The discord client class that manages everything
@@ -43,12 +48,63 @@ class DiscordClient {
 	/** @var LoggerModule */
 	private $logger;
 
-	/** @var DiscordClientSocket */
+	/** @var \React\EventLoop\ExtEventLoop|\React\EventLoop\LibEventLoop|\React\EventLoop\LibEvLoop|\React\EventLoop\StreamSelectLoop */
+	private $loop;
+
+	/** @var DiscordSocketInterface */
 	private $clientSocket;
 
+	/** @var ClientWebSocketSessionAdapter */
+	private $socketSessionAdapter;
+
+	/** @var int */
+	private $heartbeatInterval = -1;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatTimer = null;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatAckTimer = null;
+
+	/** @var int|null */
+	private $sequence = null;
+
+	/**
+	 * @return LoggerModule
+	 */
+	public function getLogger() : LoggerModule {
+		return $this->logger;
+	}
+
+	/**
+	 * @return \React\EventLoop\ExtEventLoop|\React\EventLoop\LibEventLoop|\React\EventLoop\LibEvLoop|\React\EventLoop\StreamSelectLoop
+	 */
+	public function getLoop() {
+		return $this->loop;
+	}
+
+	/**
+	 * @return DiscordSocketInterface
+	 */
+	public function getClientSocket() : DiscordSocketInterface {
+		return $this->clientSocket;
+	}
+
+	/**
+	 * @return ClientWebSocketSessionAdapter
+	 */
+	public function getSocketSessionAdapter() : ClientWebSocketSessionAdapter {
+		return $this->socketSessionAdapter;
+	}
+
+	/**
+	 * DiscordClient constructor.
+	 *
+	 * @param array $options
+	 */
 	public function __construct(array $options = []) {
 		if(php_sapi_name() !== "cli") {
-			trigger_error('DiscordPHP will not run on a webserver. Please use PHP CLI to run a DiscordPHP bot.', E_USER_ERROR);
+			trigger_error("DiscordPHP will not run on a web server. Please run PHP in CLI mode to use DiscordPHP.", E_USER_ERROR);
 		}
 
 		OpcodePool::init();
@@ -57,19 +113,70 @@ class DiscordClient {
 		$this->logger->addWrapper(new MonologWrapper($this->logger));
 		$this->logger->info("Logger enabled!");
 
-		$this->clientSocket = new DiscordClientSocket($this);
+		$this->loop = Factory::create();
+		$this->clientSocket = new DiscordSocketInterface($this);
+		$this->socketSessionAdapter = new ClientWebSocketSessionAdapter($this);
 	}
 
-	public function getLogger() : LoggerModule {
-		return $this->logger;
+	/**
+	 * Start all the sockets after everything is loaded
+	 */
+	public function start() {
+		$this->clientSocket->connect();
+
+		$this->loop->run(); // start the loop to allow the sockets to tick/cycle
 	}
 
-	public function getClientSocket() : DiscordClientSocket {
-		return $this->clientSocket;
+	/**
+	 * Stop all the socket connections safely
+	 */
+	public function stop() {
+		$this->loop->stop();
+		$this->clientSocket->disconnect();
 	}
 
-	public function handleError() {
+	/**
+	 * @param int|null $sequence
+	 */
+	public function updateSequence(int $sequence) {
+		$this->sequence = $sequence;
+	}
 
+	/**
+	 * Update the heartbeat interval
+	 *
+	 * @param int $interval
+	 */
+	public function setHeartbeat(int $interval) {
+		$this->heartbeatInterval = $interval;
+
+		if($this->heartbeatTimer !== null) {
+			$this->heartbeatTimer->cancel();
+		}
+
+		$interval /= 1000;
+		$this->heartbeatTimer = $this->loop->addPeriodicTimer($interval, function() {
+			$op = new HeartbeatPayload();
+			$op->data = $this->sequence;
+
+			$this->getClientSocket()->getInterface()->putPayload($op);
+
+			$this->heartbeatAckTimer = $this->loop->addTimer($this->heartbeatInterval / 1000, function() {
+				if(!$this->clientSocket->getInterface()->isConnected()) {
+					return;
+				}
+
+				$this->logger->warning("Didn't receive heartbeat ACK within heartbeat interval, closing connection...");
+				$this->clientSocket->getInterface()->disconnect();
+			});
+		});
+	}
+
+	/**
+	 * Cancel the heartbeat acknowledgement timer
+	 */
+	public function clearHeartbeatAckTimer() {
+		$this->heartbeatAckTimer->cancel();
 	}
 
 }

@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class HeartbeatACKPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_HEARTBEAT_ACK;
@@ -26,6 +28,10 @@ class HeartbeatACKPayload extends PayloadData {
 
 	public function pack() {
 		// No data is sent in a heartbeat acknowledgement
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleHeartbeatAck($this);
 	}
 
 }

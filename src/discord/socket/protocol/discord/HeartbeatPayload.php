@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class HeartbeatPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_HEARTBEAT;
@@ -30,4 +32,9 @@ class HeartbeatPayload extends PayloadData {
 	public function pack() {
 		$this->payload->d = $this->data;
 	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleHeartbeat($this);
+	}
+
 }

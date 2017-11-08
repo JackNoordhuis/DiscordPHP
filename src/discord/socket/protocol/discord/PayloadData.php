@@ -16,19 +16,23 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 abstract class PayloadData {
 
 	const OPCODE_ID = -1;
 
 	/** @var \stdClass */
-	public $payload;
+	protected $payload;
 
 	public function __construct() {
 		$this->payload = new \stdClass();
+		$this->payload->d = new \stdClass();
 	}
 
 	public function setPayload(\stdClass $payload) {
 		$this->payload = $payload;
+		return $this;
 	}
 
 	public function getPayload() : \stdClass {
@@ -43,6 +47,10 @@ abstract class PayloadData {
 		return (new \ReflectionClass($this))->getShortName();
 	}
 
+	public function reset() {
+		$this->payload->op = $this->pid();
+	}
+
 	/**
 	 * Where all the incoming data will be read
 	 */
@@ -52,5 +60,12 @@ abstract class PayloadData {
 	 * Where all the outgoing data will be written
 	 */
 	abstract public function pack();
+
+	/**
+	 * @param WebSocketSession $session
+	 *
+	 * @return bool
+	 */
+	abstract public function handle(WebSocketSession $session) : bool;
 
 }

@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class ReconnectPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_RECONNECT;
@@ -26,6 +28,10 @@ class ReconnectPayload extends PayloadData {
 
 	public function pack() {
 		// No data is sent in a reconnect payload
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleReconnect($this);
 	}
 
 }

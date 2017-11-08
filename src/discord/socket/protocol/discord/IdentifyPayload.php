@@ -16,6 +16,8 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\WebSocketSession;
+
 class IdentifyPayload extends PayloadData {
 
 	const OPCODE_ID = OpcodeInfo::OP_IDENTIFY;
@@ -54,6 +56,10 @@ class IdentifyPayload extends PayloadData {
 		$this->payload->large_threshold = $this->threshold;
 		$this->payload->shard = $this->shard;
 		$this->payload->presence = $this->presence;
+	}
+
+	public function handle(WebSocketSession $session) : bool {
+		return $session->handleIdentify($this);
 	}
 
 }

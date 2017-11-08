@@ -18,4 +18,16 @@ namespace discord\util;
 
 class Utils {
 
+	/**
+	 * Build a http get request
+	 *
+	 * @param string $uri
+	 * @param array $params
+	 *
+	 * @return string
+	 */
+	public static function buildParams(string $uri, array $params) : string {
+		return trim($uri, "/") . "/?" . http_build_query($params);
+	}
+
 }
