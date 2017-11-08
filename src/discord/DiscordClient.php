@@ -1,18 +1,16 @@
 <?php
 
 /**
- * DiscordPHP – DiscordClient.php
+ * DiscordClient.php – DiscordPHP
  *
- * Copyright (C) 2017 Jack Noordhuis
+ * Copyright (C) 2015-2017 Jack Noordhuis
  *
- * This is private software, you cannot redistribute and/or modify it in any way
- * unless given explicit permission to do so. If you have not been given explicit
- * permission to view or modify this software you should take the appropriate actions
- * to remove this software from your device immediately.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * @author Jack Noordhuis
- *
- * Created on 25/9/17 at 12:49 AM
+ * @author Jack Noordhuiss
  *
  */
 
@@ -20,6 +18,8 @@ namespace discord;
 
 use discord\module\logger\LoggerModule;
 use discord\module\logger\wrappers\MonologWrapper;
+use discord\socket\DiscordClientSocket;
+use discord\socket\protocol\discord\OpcodePool;
 
 /**
  * The discord client class that manages everything
@@ -27,26 +27,45 @@ use discord\module\logger\wrappers\MonologWrapper;
 class DiscordClient {
 
 	/**
-	 * The discord gateway version to use
+	 * The client library version
+	 *
+	 * @var string
 	 */
-	const GATEWAY_VERSION = 6;
+	const CLIENT_VERSION = "0.0.1_ALPHA-dev#2";
 
 	/**
-	 * The discord gateway encoding to use
+	 * The client library name
+	 *
+	 * @var string
 	 */
-	const GATEWAY_ENCODING = "json";
+	const CLIENT_NAME = "Discord PHP";
 
 	/** @var LoggerModule */
 	private $logger;
 
+	/** @var DiscordClientSocket */
+	private $clientSocket;
+
 	public function __construct(array $options = []) {
+		OpcodePool::init();
+
 		$this->logger = new LoggerModule($this);
 		$this->logger->addWrapper(new MonologWrapper($this->logger));
 		$this->logger->info("Logger enabled!");
+
+		$this->clientSocket = new DiscordClientSocket($this);
 	}
 
 	public function getLogger() : LoggerModule {
 		return $this->logger;
+	}
+
+	public function getClientSocket() : DiscordClientSocket {
+		return $this->clientSocket;
+	}
+
+	public function handleError() {
+
 	}
 
 }

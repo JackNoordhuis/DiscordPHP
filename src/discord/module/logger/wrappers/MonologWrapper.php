@@ -1,18 +1,16 @@
 <?php
 
 /**
- * DiscordPHP – MonologWrapper.php
+ * MonologWrapper.php – DiscordPHP
  *
- * Copyright (C) 2017 Jack Noordhuis
+ * Copyright (C) 2015-2017 Jack Noordhuis
  *
- * This is private software, you cannot redistribute and/or modify it in any way
- * unless given explicit permission to do so. If you have not been given explicit
- * permission to view or modify this software you should take the appropriate actions
- * to remove this software from your device immediately.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * @author Jack Noordhuis
- *
- * Created on 25/9/17 at 12:56 AM
+ * @author Jack Noordhuiss
  *
  */
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * simple-logger.php – DiscordPHP
+ * HeartbeatPayload.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,10 +14,20 @@
  *
  */
 
-include __DIR__ . "/../vendor/autoload.php";
+namespace discord\socket\protocol\discord;
 
-use discord\DiscordClient;
+class HeartbeatPayload extends PayloadData {
 
-$client = new DiscordClient([]);
+	const OPCODE_ID = OpcodeInfo::OP_HEARTBEAT;
 
-$client->getLogger()->info("This is a message!");
+	/** @var int */
+	public $data;
+
+	public function unpack() {
+		$this->data = $this->payload->d;
+	}
+
+	public function pack() {
+		$this->payload->d = $this->data;
+	}
+}

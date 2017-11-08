@@ -1,6 +1,6 @@
 {
   "name": "jacknoordhuis/discord-php",
-  "description": "An unofficial library to interact with the Discord gateway API.",
+  "description": "An unofficial library to assist with the interaction of the Discord gateway API.",
   "license": "GPL v3",
   "authors": [
     {
@@ -10,7 +10,10 @@
   ],
   "require": {
     "php": "^7.0",
-    "monolog/monolog": "^1.19"
+    "monolog/monolog": "^1.19",
+    "react/socket": "^0.8.5",
+    "guzzlehttp/guzzle": "~6.0",
+    "ratchet/pawl": "^0.3.1"
   },
   "autoload": {
     "psr-4": {

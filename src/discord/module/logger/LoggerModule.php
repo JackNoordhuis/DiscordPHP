@@ -1,18 +1,16 @@
 <?php
 
 /**
- * DiscordPHP – LoggerModule.php
+ * LoggerModule.php – DiscordPHP
  *
- * Copyright (C) 2017 Jack Noordhuis
+ * Copyright (C) 2015-2017 Jack Noordhuis
  *
- * This is private software, you cannot redistribute and/or modify it in any way
- * unless given explicit permission to do so. If you have not been given explicit
- * permission to view or modify this software you should take the appropriate actions
- * to remove this software from your device immediately.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * @author Jack Noordhuis
- *
- * Created on 25/9/17 at 12:52 AM
+ * @author Jack Noordhuiss
  *
  */
 
@@ -57,18 +55,82 @@ class LoggerModule {
 		return false;
 	}
 
-	/**
-	 * Attempt to call the function for each log wrapper
-	 *
-	 * @param string $name
-	 * @param mixed $arguments
-	 */
-	public function __call($name, $arguments) { // TODO: Remove this hack and create actual methods
+	public function debug(string $message, ...$args) {
 		foreach($this->wrappers as $wrapper) {
-			if(method_exists($wrapper, $name)) {
-				$wrapper->$name(...$arguments);
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->debug($message, $args);
 			} else {
-				throw new \BadMethodCallException("Method {$name} not found for " . (new \ReflectionObject($wrapper))->getShortName() . " logger wrapper!");
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function info(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->info($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function notice(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->notice($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function warning(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->warning($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function error(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->error($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function critical(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->critical($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function alert(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->alert($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
+			}
+		}
+	}
+
+	public function emergency(string $message, ...$args) {
+		foreach($this->wrappers as $wrapper) {
+			if(method_exists($wrapper, __FUNCTION__)) {
+				$wrapper->emergency($message, $args);
+			} else {
+				throw new \BadMethodCallException("Method '" . __FUNCTION__ . "' not found for " . (new \ReflectionObject($wrapper))->getShortName() . "!");
 			}
 		}
 	}

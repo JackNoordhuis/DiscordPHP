@@ -1,7 +1,7 @@
 <?php
 
 /**
- * simple-logger.php – DiscordPHP
+ * Utils.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,10 +14,8 @@
  *
  */
 
-include __DIR__ . "/../vendor/autoload.php";
+namespace discord\util;
 
-use discord\DiscordClient;
+class Utils {
 
-$client = new DiscordClient([]);
-
-$client->getLogger()->info("This is a message!");
+}
