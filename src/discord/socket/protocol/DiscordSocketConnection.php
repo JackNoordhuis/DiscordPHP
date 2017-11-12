@@ -175,11 +175,14 @@ class DiscordSocketConnection {
 
 	/**
 	 * Stop the socket connection
+	 *
+	 * @param int $code
+	 * @param string $reason
 	 */
-	public function disconnect(){
+	public function disconnect(int $code = 1000, string $reason = "Disconnecting..."){
 		if($this->connected) {
 			$this->connected = false;
-			$this->socket->close(1000, "Disconnecting");
+			$this->socket->close($code, $reason);
 
 			$this->getSocketClient()->getClient()->getLogger()->debug("Disconnected from websocket on interface #{$this->id}");
 		} else {
@@ -218,8 +221,8 @@ class DiscordSocketConnection {
 					return;
 				}
 
-				$this->socketClient->getClient()->getLogger()->warning("Didn't receive heartbeat ACK within heartbeat interval, closing connection...");
-				$this->disconnect();
+				$this->socketClient->getClient()->getLogger()->warning("Didn't receive heartbeat ACK within heartbeat interval for interface #{$this->id}, closing connection...");
+				$this->disconnect(1001, "Didn't receive heartbeat ACK within heartbeat interval");
 			});
 		});
 	}

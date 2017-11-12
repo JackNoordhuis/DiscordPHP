@@ -135,12 +135,15 @@ class DiscordSocketInterface {
 
 	/**
 	 * Disconnect from the websockets
+	 *
+	 * @param int $code
+	 * @param string $reason
 	 */
-	public function disconnect() {
+	public function disconnect(int $code = 1000, string $reason = "Disconnecting...") {
 		$this->getClient()->getLogger()->info("Stopping websocket connections...");
 
 		foreach($this->interfaces as $interface) {
-			$interface->disconnect();
+			$interface->disconnect($code, $reason);
 		}
 	}
 
