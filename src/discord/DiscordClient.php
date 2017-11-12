@@ -19,12 +19,9 @@ namespace discord;
 use discord\module\logger\LoggerModule;
 use discord\module\logger\wrappers\MonologWrapper;
 use discord\socket\DiscordSocketInterface;
-use discord\socket\protocol\discord\HeartbeatPayload;
 use discord\socket\protocol\discord\OpcodePool;
 use discord\socket\protocol\ClientWebSocketSessionAdapter;
 use React\EventLoop\Factory;
-use React\EventLoop\Timer\Timer;
-use React\EventLoop\Timer\TimerInterface;
 
 /**
  * The discord client class that manages everything
@@ -56,18 +53,6 @@ class DiscordClient {
 
 	/** @var ClientWebSocketSessionAdapter */
 	private $socketSessionAdapter;
-
-	/** @var int */
-	private $heartbeatInterval = -1;
-
-	/** @var TimerInterface|Timer|null */
-	private $heartbeatTimer = null;
-
-	/** @var TimerInterface|Timer|null */
-	private $heartbeatAckTimer = null;
-
-	/** @var int|null */
-	private $sequence = null;
 
 	/**
 	 * @return LoggerModule
@@ -133,50 +118,6 @@ class DiscordClient {
 	public function stop() {
 		$this->loop->stop();
 		$this->clientSocket->disconnect();
-	}
-
-	/**
-	 * @param int|null $sequence
-	 */
-	public function updateSequence(int $sequence) {
-		$this->sequence = $sequence;
-	}
-
-	/**
-	 * Update the heartbeat interval
-	 *
-	 * @param int $interval
-	 */
-	public function setHeartbeat(int $interval) {
-		$this->heartbeatInterval = $interval;
-
-		if($this->heartbeatTimer !== null) {
-			$this->heartbeatTimer->cancel();
-		}
-
-		$interval /= 1000;
-		$this->heartbeatTimer = $this->loop->addPeriodicTimer($interval, function() {
-			$op = new HeartbeatPayload();
-			$op->data = $this->sequence;
-
-			$this->getClientSocket()->getInterface()->putPayload($op);
-
-			$this->heartbeatAckTimer = $this->loop->addTimer($this->heartbeatInterval / 1000, function() {
-				if(!$this->clientSocket->getInterface()->isConnected()) {
-					return;
-				}
-
-				$this->logger->warning("Didn't receive heartbeat ACK within heartbeat interval, closing connection...");
-				$this->clientSocket->getInterface()->disconnect();
-			});
-		});
-	}
-
-	/**
-	 * Cancel the heartbeat acknowledgement timer
-	 */
-	public function clearHeartbeatAckTimer() {
-		$this->heartbeatAckTimer->cancel();
 	}
 
 }

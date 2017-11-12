@@ -93,10 +93,12 @@ class DiscordSocketInterface {
 	}
 
 	/**
+	 * @param int $id
+	 *
 	 * @return DiscordSocketConnection
 	 */
-	public function getInterface() {
-		return $this->interfaces[0];
+	public function getInterface(int $id) {
+		return $this->interfaces[$id];
 	}
 
 	/**

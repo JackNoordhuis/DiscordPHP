@@ -16,11 +16,15 @@
 
 namespace discord\socket\protocol\discord;
 
+use discord\socket\protocol\DiscordSocketConnection;
 use discord\socket\protocol\WebSocketSession;
 
 abstract class PayloadData {
 
 	const OPCODE_ID = -1;
+
+	/** @var int */
+	protected $connectionId = -1;
 
 	/** @var \stdClass */
 	protected $payload;
@@ -43,11 +47,16 @@ abstract class PayloadData {
 		return $this::OPCODE_ID;
 	}
 
+	public function getConnectionId() : int {
+		return $this->connectionId;
+	}
+
 	public function getName() : string {
 		return (new \ReflectionClass($this))->getShortName();
 	}
 
-	public function reset() {
+	public function reset(DiscordSocketConnection $connection) {
+		$this->connectionId = $connection->getId();
 		$this->payload->op = $this->pid();
 	}
 

@@ -17,10 +17,13 @@
 namespace discord\socket\protocol;
 
 use discord\socket\DiscordSocketInterface;
+use discord\socket\protocol\discord\HeartbeatPayload;
 use discord\socket\protocol\discord\OpcodePool;
 use discord\socket\protocol\discord\PayloadData;
 use Ratchet\Client\WebSocket;
 use Ratchet\RFC6455\Messaging\Message;
+use React\EventLoop\Timer\Timer;
+use React\EventLoop\Timer\TimerInterface;
 
 /**
  * The class that manages a single socket connection
@@ -38,6 +41,18 @@ class DiscordSocketConnection {
 
 	/** @var int */
 	private $id;
+
+	/** @var int */
+	private $heartbeatInterval = -1;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatTimer = null;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatAckTimer = null;
+
+	/** @var int|null */
+	private $sequence = null;
 
 	/** @var bool */
 	private $connected = false;
@@ -59,6 +74,13 @@ class DiscordSocketConnection {
 	 */
 	public function getSocket() : WebSocket {
 		return $this->socket;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getId() : int {
+		return $this->id;
 	}
 
 	/**
@@ -99,7 +121,7 @@ class DiscordSocketConnection {
 	 * @param PayloadData $payload
 	 */
 	public function putPayload(PayloadData $payload) {
-		$payload->reset();
+		$payload->reset($this);
 		$payload->pack();
 
 		$this->getSocket()->send(json_encode($payload->getPayload()));
@@ -121,6 +143,7 @@ class DiscordSocketConnection {
 		$op = OpcodePool::getOpcode($data);
 
 		if($op instanceof PayloadData) {
+			$op->reset($this);
 			$op->unpack();
 
 			$this->socketClient->getClient()->getSocketSessionAdapter()->handlePayloadData($op);
@@ -162,6 +185,50 @@ class DiscordSocketConnection {
 		} else {
 			$this->getSocketClient()->getClient()->getLogger()->notice("Already disconnected to websocket!");
 		}
+	}
+
+	/**
+	 * @param int|null $sequence
+	 */
+	public function updateSequence(int $sequence) {
+		$this->sequence = $sequence;
+	}
+
+	/**
+	 * Update the heartbeat interval
+	 *
+	 * @param int $interval
+	 */
+	public function setHeartbeat(int $interval) {
+		$this->heartbeatInterval = $interval;
+
+		if($this->heartbeatTimer !== null) {
+			$this->heartbeatTimer->cancel();
+		}
+
+		$interval /= 1000;
+		$this->heartbeatTimer = $this->socketClient->getClient()->getLoop()->addPeriodicTimer($interval, function() {
+			$op = new HeartbeatPayload();
+			$op->data = $this->sequence;
+
+			$this->putPayload($op);
+
+			$this->heartbeatAckTimer = $this->socketClient->getClient()->getLoop()->addTimer($this->heartbeatInterval / 1000, function() {
+				if(!$this->isConnected()) {
+					return;
+				}
+
+				$this->socketClient->getClient()->getLogger()->warning("Didn't receive heartbeat ACK within heartbeat interval, closing connection...");
+				$this->disconnect();
+			});
+		});
+	}
+
+	/**
+	 * Cancel the heartbeat acknowledgement timer
+	 */
+	public function clearHeartbeatAckTimer() {
+		$this->heartbeatAckTimer->cancel();
 	}
 
 }

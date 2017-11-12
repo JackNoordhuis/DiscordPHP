@@ -57,12 +57,12 @@ class ClientWebSocketSessionAdapter extends WebSocketSession {
 	}
 
 	public function handleHello(HelloPayload $payload) : bool {
-		$this->client->setHeartbeat($payload->heartbeatInterval);
+		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->setHeartbeat($payload->heartbeatInterval);
 		return true;
 	}
 
 	public function handleHeartbeatAck(HeartbeatACKPayload $payload) : bool {
-		$this->client->clearHeartbeatAckTimer();
+		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->clearHeartbeatAckTimer();
 		return true;
 	}
 
