@@ -231,7 +231,7 @@ class DiscordSocketConnection {
 	 * Cancel the heartbeat acknowledgement timer
 	 */
 	public function clearHeartbeatAckTimer() {
-		$this->heartbeatAckTimer->cancel();
+		$this->socketClient->getClient()->getLoop()->cancelTimer($this->heartbeatAckTimer);
 	}
 
 }
