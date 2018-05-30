@@ -16,6 +16,7 @@
 
 namespace discord\socket\discord;
 
+use discord\DiscordClient;
 use discord\socket\SocketInterfaceHandler;
 use discord\socket\discord\protocol\HeartbeatPayload;
 use discord\socket\discord\protocol\OpcodePool;
@@ -34,7 +35,7 @@ class DiscordSocketInterface {
 	static $socketInterfaceCount = 0;
 
 	/** @var SocketInterfaceHandler */
-	private $socketClient;
+	private $socketInterface;
 
 	/** @var WebSocket */
 	private $socket;
@@ -42,31 +43,31 @@ class DiscordSocketInterface {
 	/** @var int */
 	private $id;
 
-	/** @var int */
-	private $heartbeatInterval = -1;
-
-	/** @var TimerInterface|Timer|null */
-	private $heartbeatTimer = null;
-
-	/** @var TimerInterface|Timer|null */
-	private $heartbeatAckTimer = null;
-
-	/** @var int|null */
-	private $sequence = null;
+	/** @var ClientSocketSession */
+	private $socketSession;
 
 	/** @var bool */
 	private $connected = false;
 
 	public function __construct(SocketInterfaceHandler $socketClient) {
 		$this->id = static::$socketInterfaceCount++;
-		$this->socketClient = $socketClient;
+		$this->socketInterface = $socketClient;
+
+		$this->socketSession = new ClientSocketSession($socketClient->getClient(), $this);
+	}
+
+	/**
+	 * @return DiscordClient
+	 */
+	public function getClient() : DiscordClient {
+		return $this->socketInterface->getClient();
 	}
 
 	/**
 	 * @return SocketInterfaceHandler
 	 */
-	public function getSocketClient() : SocketInterfaceHandler {
-		return $this->socketClient;
+	public function getSocketInterface() : SocketInterfaceHandler {
+		return $this->socketInterface;
 	}
 
 	/**
@@ -81,6 +82,13 @@ class DiscordSocketInterface {
 	 */
 	public function getId() : int {
 		return $this->id;
+	}
+
+	/**
+	 * @return ClientSocketSession
+	 */
+	public function getSocketSession() : ClientSocketSession {
+		return $this->socketSession;
 	}
 
 	/**
@@ -111,7 +119,7 @@ class DiscordSocketInterface {
 			if(strpos($error->getMessage(), "Tried to write to closed stream") !== false) {
 				return;
 			}
-			$this->socketClient->getClient()->getLogger()->error("WebSocket error", ["e" => $error->getMessage()]);
+			$this->socketInterface->getClient()->getLogger()->error("WebSocket error", ["e" => $error->getMessage()]);
 		});
 	}
 
@@ -121,7 +129,7 @@ class DiscordSocketInterface {
 	 * @param PayloadData $payload
 	 */
 	public function putPayload(PayloadData $payload) {
-		$payload->reset($this);
+		$payload->reset($this, false);
 		$payload->pack();
 
 		$this->getSocket()->send(json_encode($payload->getPayload()));
@@ -143,12 +151,12 @@ class DiscordSocketInterface {
 		$op = OpcodePool::getOpcode($data);
 
 		if($op instanceof PayloadData) {
-			$op->reset($this);
+			$op->reset($this, false);
 			$op->unpack();
 
-			$this->socketClient->getClient()->getSocketSessionAdapter()->handlePayloadData($op);
+			$this->socketSession->handlePayloadData($op);
 		} else {
-			$this->getSocketClient()->getClient()->getLogger()->notice("Received payload with unknown opcode: " . json_encode($data));
+			$this->getSocketInterface()->getClient()->getLogger()->notice("Received payload with unknown opcode: " . json_encode($data));
 		}
 	}
 
@@ -157,19 +165,19 @@ class DiscordSocketInterface {
 	 */
 	public function connect() {
 		if(!$this->connected) {
-			$this->getSocketClient()->getSocketFactory()->__invoke($this->getSocketClient()->getGateway())->then(
+			$this->getSocketInterface()->getSocketFactory()->__invoke($this->getSocketInterface()->getGateway())->then(
 				function(WebSocket $socket) {
 					$this->connected = true;
 					$this->start($socket);
 
-					$this->getSocketClient()->getClient()->getLogger()->debug("Connected to websocket on interface #{$this->id}");
+					$this->getSocketInterface()->getClient()->getLogger()->debug("Connected to websocket on interface #{$this->id}");
 				},
 				function(\Throwable $e) {
-					$this->getSocketClient()->getClient()->getLogger()->error("Websocket error", ["e" => $e->getMessage()]);
+					$this->getSocketInterface()->getClient()->getLogger()->error("Websocket error", ["e" => $e->getMessage()]);
 				}
 			);
 		} else {
-			$this->getSocketClient()->getClient()->getLogger()->notice("Already connected to websocket!");
+			$this->getSocketInterface()->getClient()->getLogger()->notice("Already connected to websocket!");
 		}
 	}
 
@@ -184,54 +192,10 @@ class DiscordSocketInterface {
 			$this->connected = false;
 			$this->socket->close($code, $reason);
 
-			$this->getSocketClient()->getClient()->getLogger()->debug("Disconnected from websocket on interface #{$this->id}");
+			$this->getSocketInterface()->getClient()->getLogger()->debug("Disconnected from websocket on interface #{$this->id}");
 		} else {
-			$this->getSocketClient()->getClient()->getLogger()->notice("Already disconnected to websocket!");
+			$this->getSocketInterface()->getClient()->getLogger()->notice("Already disconnected to websocket!");
 		}
-	}
-
-	/**
-	 * @param int|null $sequence
-	 */
-	public function updateSequence(int $sequence) {
-		$this->sequence = $sequence;
-	}
-
-	/**
-	 * Update the heartbeat interval
-	 *
-	 * @param int $interval
-	 */
-	public function setHeartbeat(int $interval) {
-		$this->heartbeatInterval = $interval;
-
-		if($this->heartbeatTimer !== null) {
-			$this->socketClient->getClient()->getLoop()->cancelTimer($this->heartbeatTimer);
-		}
-
-		$interval /= 1000;
-		$this->heartbeatTimer = $this->socketClient->getClient()->getLoop()->addPeriodicTimer($interval, function() use ($interval) {
-			$op = new HeartbeatPayload();
-			$op->data = $this->sequence;
-
-			$this->putPayload($op);
-
-			$this->heartbeatAckTimer = $this->socketClient->getClient()->getLoop()->addTimer($interval, function() {
-				if(!$this->isConnected()) {
-					return;
-				}
-
-				$this->socketClient->getClient()->getLogger()->warning("Didn't receive heartbeat ACK within heartbeat interval for interface #{$this->id}, closing connection...");
-				$this->disconnect(1001, "Didn't receive heartbeat ACK within heartbeat interval");
-			});
-		});
-	}
-
-	/**
-	 * Cancel the heartbeat acknowledgement timer
-	 */
-	public function clearHeartbeatAckTimer() {
-		$this->socketClient->getClient()->getLoop()->cancelTimer($this->heartbeatAckTimer);
 	}
 
 }

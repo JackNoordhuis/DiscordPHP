@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class RequestGuildMembersPayload extends PayloadData {
 
@@ -43,8 +43,8 @@ class RequestGuildMembersPayload extends PayloadData {
 		$this->payload->limit = $this->limit;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleRequestGuildMembers($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleRequestGuildMembers($this);
 	}
 
 }

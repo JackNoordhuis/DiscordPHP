@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class ResumePayload extends PayloadData {
 
@@ -43,8 +43,8 @@ class ResumePayload extends PayloadData {
 		$this->payload->seq = $this->lastSequence;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleResume($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleResume($this);
 	}
 
 }

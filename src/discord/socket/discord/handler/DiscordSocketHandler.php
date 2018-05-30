@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DiscordSocketSession.php – DiscordPHP
+ * DiscordSocketHandler.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,7 +14,7 @@
  *
  */
 
-namespace discord\socket\discord;
+namespace discord\socket\discord\handler;
 
 use discord\socket\discord\protocol\DispatchPayload;
 use discord\socket\discord\protocol\HeartbeatACKPayload;
@@ -29,9 +29,11 @@ use discord\socket\discord\protocol\ResumePayload;
 use discord\socket\discord\protocol\StatusUpdatePayload;
 use discord\socket\discord\protocol\VoiceStatusUpdatePayload;
 
-abstract class DiscordSocketSession {
-
-	abstract public function handlePayloadData(PayloadData $payload);
+/**
+ * Handlers are attached to sessions to handle payloads received from their associated sockets.
+ * A handler is mutable and may be removed/replaced at any time.
+ */
+abstract class DiscordSocketHandler {
 
 	public function handleDispatch(DispatchPayload $payload) : bool {
 		return false;

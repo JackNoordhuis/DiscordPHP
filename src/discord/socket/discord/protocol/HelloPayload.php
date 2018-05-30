@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class HelloPayload extends PayloadData {
 
@@ -38,8 +38,8 @@ class HelloPayload extends PayloadData {
 		$this->payload->d->_trace = $this->trace;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleHello($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleHello($this);
 	}
 
 }

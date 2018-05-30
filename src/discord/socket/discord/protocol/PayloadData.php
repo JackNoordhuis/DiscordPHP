@@ -17,7 +17,7 @@
 namespace discord\socket\discord\protocol;
 
 use discord\socket\discord\DiscordSocketInterface;
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 abstract class PayloadData {
 
@@ -30,8 +30,7 @@ abstract class PayloadData {
 	protected $payload;
 
 	public function __construct() {
-		$this->payload = new \stdClass();
-		$this->payload->d = new \stdClass();
+		$this->reset(null, true);
 	}
 
 	public function setPayload(\stdClass $payload) {
@@ -55,8 +54,16 @@ abstract class PayloadData {
 		return (new \ReflectionClass($this))->getShortName();
 	}
 
-	public function reset(DiscordSocketInterface $connection) {
-		$this->connectionId = $connection->getId();
+	public function reset(?DiscordSocketInterface $connection = null, ?bool $payload = false) : void {
+		if($connection !== null) {
+			$this->connectionId = $connection->getId();
+		}
+
+		if($payload) {
+			$this->payload = new \stdClass();
+			$this->payload->d = new \stdClass();
+		}
+
 		$this->payload->op = $this->pid();
 	}
 
@@ -71,10 +78,9 @@ abstract class PayloadData {
 	abstract public function pack();
 
 	/**
-	 * @param DiscordSocketSession $session
-	 *
+	 * @param DiscordSocketHandler $handler
 	 * @return bool
 	 */
-	abstract public function handle(DiscordSocketSession $session) : bool;
+	abstract public function handle(DiscordSocketHandler $handler) : bool;
 
 }

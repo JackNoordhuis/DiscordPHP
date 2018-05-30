@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class InvalidSessionPayload extends PayloadData {
 
@@ -33,8 +33,8 @@ class InvalidSessionPayload extends PayloadData {
 		$this->payload->d = $this->payload;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleInvalidSession($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleInvalidSession($this);
 	}
 
 }

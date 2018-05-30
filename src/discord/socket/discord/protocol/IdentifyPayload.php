@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class IdentifyPayload extends PayloadData {
 
@@ -58,8 +58,8 @@ class IdentifyPayload extends PayloadData {
 		$this->payload->presence = $this->presence;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleIdentify($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleIdentify($this);
 	}
 
 }

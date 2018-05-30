@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class HeartbeatACKPayload extends PayloadData {
 
@@ -30,8 +30,8 @@ class HeartbeatACKPayload extends PayloadData {
 		// No data is sent in a heartbeat acknowledgement
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleHeartbeatAck($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleHeartbeatAck($this);
 	}
 
 }

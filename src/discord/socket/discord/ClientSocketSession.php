@@ -17,53 +17,109 @@
 namespace discord\socket\discord;
 
 use discord\DiscordClient;
-use discord\socket\discord\protocol\DispatchPayload;
-use discord\socket\discord\protocol\HeartbeatACKPayload;
+use discord\socket\discord\handler\DiscordSocketHandler;
+use discord\socket\discord\handler\IdentifyDiscordSocketHandler;
 use discord\socket\discord\protocol\HeartbeatPayload;
-use discord\socket\discord\protocol\HelloPayload;
-use discord\socket\discord\protocol\InvalidSessionPayload;
 use discord\socket\discord\protocol\PayloadData;
-use discord\socket\discord\protocol\ReconnectPayload;
+use React\EventLoop\Timer\Timer;
+use React\EventLoop\TimerInterface;
 
-class ClientSocketSession extends DiscordSocketSession {
+class ClientSocketSession {
 
 	/** @var DiscordClient */
 	private $client;
 
-	public function __construct(DiscordClient $client) {
+	/** @var DiscordSocketInterface */
+	private $interface;
+
+	/** @var int */
+	private $heartbeatInterval = -1;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatTimer = null;
+
+	/** @var TimerInterface|Timer|null */
+	private $heartbeatAckTimer = null;
+
+	/** @var int|null */
+	private $sequence = null;
+
+	/** @var DiscordSocketHandler */
+	protected $handler;
+
+	public function __construct(DiscordClient $client, DiscordSocketInterface $interface) {
 		$this->client = $client;
+		$this->interface = $interface;
+
+		$this->handler = new IdentifyDiscordSocketHandler($this);
+	}
+	/**
+	 * @return DiscordSocketHandler
+	 */
+	public function getHandler() : DiscordSocketHandler {
+		return $this->handler;
 	}
 
-	public function handlePayloadData(PayloadData $payload) {
-		if(!$payload->handle($this)) {
+	/**
+	 * @param DiscordSocketHandler $handler
+	 */
+	public function setHandler(DiscordSocketHandler $handler) : void {
+		$this->handler = $handler;
+	}
+
+	public function handlePayloadData(PayloadData $payload) : void {
+		if(!$payload->handle($this->handler)) {
 			$this->client->getLogger()->debug("Unhandled " . $payload->getName() . " received: " . json_encode($payload->getPayload()));
 		}
 	}
 
-	public function handleDispatch(DispatchPayload $payload) : bool {
-		return false;
-	}
-
-	public function handleHeartbeat(HeartbeatPayload $payload) : bool {
-		return false;
-	}
-
-	public function handleReconnect(ReconnectPayload $payload) : bool {
-		return false;
-	}
-
-	public function handleInvalidSession(InvalidSessionPayload $payload) : bool {
-		return false;
-	}
-
-	public function handleHello(HelloPayload $payload) : bool {
-		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->setHeartbeat($payload->heartbeatInterval);
+	public function sendPayloadData(PayloadData $payload) : bool {
+		$this->interface->putPayload($payload);
 		return true;
 	}
 
-	public function handleHeartbeatAck(HeartbeatACKPayload $payload) : bool {
-		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->clearHeartbeatAckTimer();
-		return true;
+	/**
+	 * @param int|null $sequence
+	 */
+	public function updateSequence(int $sequence) {
+		$this->sequence = $sequence;
+	}
+
+	/**
+	 * Update the heartbeat interval
+	 *
+	 * @param int $interval
+	 */
+	public function setHeartbeat(int $interval) {
+		$this->heartbeatInterval = $interval;
+
+		if($this->heartbeatTimer !== null) {
+			$this->interface->getClient()->getLoop()->cancelTimer($this->heartbeatTimer);
+		}
+
+		$interval /= 1000;
+		$this->heartbeatTimer = $this->interface->getClient()->getLoop()->addPeriodicTimer($interval, function() use ($interval) {
+			$op = new HeartbeatPayload();
+			$op->data = $this->sequence;
+
+			$this->putPayload($op);
+
+			$this->heartbeatAckTimer = $this->interface->getClient()->getLoop()->addTimer($interval, function() {
+				if(!$this->interface->isConnected()) {
+					return;
+				}
+
+				$this->interface->getClient()->getLogger()->warning("Didn't receive heartbeat ACK within heartbeat interval for interface #{$this->id}, closing connection...");
+				$this->interface->disconnect(1001, "Didn't receive heartbeat ACK within heartbeat interval");
+			});
+		});
+	}
+
+	/**
+	 * Cancel the heartbeat acknowledgement timer
+	 */
+	public function clearHeartbeatAckTimer() {
+		$this->interface->getClient()->getLoop()->cancelTimer($this->heartbeatAckTimer);
 	}
 
 }

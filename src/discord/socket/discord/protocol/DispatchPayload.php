@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class DispatchPayload extends PayloadData {
 
@@ -83,8 +83,8 @@ class DispatchPayload extends PayloadData {
 		$this->payload->t = $this->eventName;
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleDispatch($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleDispatch($this);
 	}
 
 }

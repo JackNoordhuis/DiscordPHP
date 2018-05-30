@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketSession;
+use discord\socket\discord\handler\DiscordSocketHandler;
 
 class ReconnectPayload extends PayloadData {
 
@@ -30,8 +30,8 @@ class ReconnectPayload extends PayloadData {
 		// No data is sent in a reconnect payload
 	}
 
-	public function handle(DiscordSocketSession $session) : bool {
-		return $session->handleReconnect($this);
+	public function handle(DiscordSocketHandler $handler) : bool {
+		return $handler->handleReconnect($this);
 	}
 
 }

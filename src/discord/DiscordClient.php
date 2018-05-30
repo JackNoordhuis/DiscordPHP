@@ -51,9 +51,6 @@ class DiscordClient {
 	/** @var SocketInterfaceHandler */
 	private $clientSocket;
 
-	/** @var ClientSocketSession */
-	private $socketSessionAdapter;
-
 	/**
 	 * @return LoggerModule
 	 */
@@ -76,13 +73,6 @@ class DiscordClient {
 	}
 
 	/**
-	 * @return ClientSocketSession
-	 */
-	public function getSocketSessionAdapter() : ClientSocketSession {
-		return $this->socketSessionAdapter;
-	}
-
-	/**
 	 * DiscordClient constructor.
 	 *
 	 * @param array $options
@@ -100,7 +90,6 @@ class DiscordClient {
 
 		$this->loop = Factory::create();
 		$this->clientSocket = new SocketInterfaceHandler($this);
-		$this->socketSessionAdapter = new ClientSocketSession($this);
 	}
 
 	/**
