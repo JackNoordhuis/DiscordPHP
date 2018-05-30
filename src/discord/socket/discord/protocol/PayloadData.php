@@ -16,8 +16,8 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\DiscordSocketConnection;
-use discord\socket\discord\WebSocketSession;
+use discord\socket\discord\DiscordSocketInterface;
+use discord\socket\discord\DiscordSocketSession;
 
 abstract class PayloadData {
 
@@ -55,7 +55,7 @@ abstract class PayloadData {
 		return (new \ReflectionClass($this))->getShortName();
 	}
 
-	public function reset(DiscordSocketConnection $connection) {
+	public function reset(DiscordSocketInterface $connection) {
 		$this->connectionId = $connection->getId();
 		$this->payload->op = $this->pid();
 	}
@@ -71,10 +71,10 @@ abstract class PayloadData {
 	abstract public function pack();
 
 	/**
-	 * @param WebSocketSession $session
+	 * @param DiscordSocketSession $session
 	 *
 	 * @return bool
 	 */
-	abstract public function handle(WebSocketSession $session) : bool;
+	abstract public function handle(DiscordSocketSession $session) : bool;
 
 }

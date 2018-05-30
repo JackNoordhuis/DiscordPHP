@@ -1,7 +1,7 @@
 <?php
 
 /**
- * WebSocketInterface.php – DiscordPHP
+ * DiscordSocketInterface.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -16,24 +16,24 @@
 
 namespace discord\socket\discord;
 
-use discord\socket\DiscordSocketInterface;
+use discord\socket\SocketInterfaceHandler;
 use discord\socket\discord\protocol\HeartbeatPayload;
 use discord\socket\discord\protocol\OpcodePool;
 use discord\socket\discord\protocol\PayloadData;
 use Ratchet\Client\WebSocket;
 use Ratchet\RFC6455\Messaging\Message;
 use React\EventLoop\Timer\Timer;
-use React\EventLoop\Timer\TimerInterface;
+use React\EventLoop\TimerInterface;
 
 /**
  * The class that manages a single socket connection
  */
-class DiscordSocketConnection {
+class DiscordSocketInterface {
 
 	/** @var int */
 	static $socketInterfaceCount = 0;
 
-	/** @var DiscordSocketInterface */
+	/** @var SocketInterfaceHandler */
 	private $socketClient;
 
 	/** @var WebSocket */
@@ -57,15 +57,15 @@ class DiscordSocketConnection {
 	/** @var bool */
 	private $connected = false;
 
-	public function __construct(DiscordSocketInterface $socketClient) {
+	public function __construct(SocketInterfaceHandler $socketClient) {
 		$this->id = static::$socketInterfaceCount++;
 		$this->socketClient = $socketClient;
 	}
 
 	/**
-	 * @return DiscordSocketInterface
+	 * @return SocketInterfaceHandler
 	 */
-	public function getSocketClient() : DiscordSocketInterface {
+	public function getSocketClient() : SocketInterfaceHandler {
 		return $this->socketClient;
 	}
 
@@ -206,17 +206,17 @@ class DiscordSocketConnection {
 		$this->heartbeatInterval = $interval;
 
 		if($this->heartbeatTimer !== null) {
-			$this->heartbeatTimer->cancel();
+			$this->socketClient->getClient()->getLoop()->cancelTimer($this->heartbeatTimer);
 		}
 
 		$interval /= 1000;
-		$this->heartbeatTimer = $this->socketClient->getClient()->getLoop()->addPeriodicTimer($interval, function() {
+		$this->heartbeatTimer = $this->socketClient->getClient()->getLoop()->addPeriodicTimer($interval, function() use ($interval) {
 			$op = new HeartbeatPayload();
 			$op->data = $this->sequence;
 
 			$this->putPayload($op);
 
-			$this->heartbeatAckTimer = $this->socketClient->getClient()->getLoop()->addTimer($this->heartbeatInterval / 1000, function() {
+			$this->heartbeatAckTimer = $this->socketClient->getClient()->getLoop()->addTimer($interval, function() {
 				if(!$this->isConnected()) {
 					return;
 				}

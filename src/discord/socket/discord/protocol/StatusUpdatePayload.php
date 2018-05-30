@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\WebSocketSession;
+use discord\socket\discord\DiscordSocketSession;
 
 class StatusUpdatePayload extends PayloadData {
 
@@ -56,7 +56,7 @@ class StatusUpdatePayload extends PayloadData {
 		$this->payload->afk = $this->afk;
 	}
 
-	public function handle(WebSocketSession $session) : bool {
+	public function handle(DiscordSocketSession $session) : bool {
 		return $session->handleStatusUpdate($this);
 	}
 

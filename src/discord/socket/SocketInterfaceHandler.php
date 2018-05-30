@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DiscordClientSocket.php – DiscordPHP
+ * SocketInterfaceHandler.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -17,7 +17,7 @@
 namespace discord\socket;
 
 use discord\DiscordClient;
-use discord\socket\discord\DiscordSocketConnection;
+use discord\socket\discord\DiscordSocketInterface;
 use discord\util\Utils;
 use GuzzleHttp\Client as HttpClient;
 use Ratchet\Client\Connector;
@@ -25,7 +25,7 @@ use Ratchet\Client\Connector;
 /**
  * The class that manages a group of socket connections (useful for sharding)
  */
-class DiscordSocketInterface {
+class SocketInterfaceHandler implements ISocketInterfaceHandler {
 
 	/**
 	 * The discord gateway version to use
@@ -54,7 +54,7 @@ class DiscordSocketInterface {
 	/** @var Connector */
 	private $socketFactory;
 
-	/** @var DiscordSocketConnection[] */
+	/** @var DiscordSocketInterface[] */
 	private $interfaces = [];
 
 	/**
@@ -66,7 +66,7 @@ class DiscordSocketInterface {
 		$this->client = $client;
 		$this->http = new HttpClient();
 		$this->socketFactory = new Connector($client->getLoop());
-		$this->interfaces[] = new DiscordSocketConnection($this);
+		$this->interfaces[] = new DiscordSocketInterface($this);
 
 		$this->setGateway();
 	}
@@ -81,7 +81,7 @@ class DiscordSocketInterface {
 	/**
 	 * @return Connector
 	 */
-	public function getSocketFactory() {
+	public function getSocketFactory() : Connector {
 		return $this->socketFactory;
 	}
 
@@ -95,7 +95,7 @@ class DiscordSocketInterface {
 	/**
 	 * @param int $id
 	 *
-	 * @return DiscordSocketConnection
+	 * @return DiscordSocketInterface
 	 */
 	public function getInterface(int $id) {
 		return $this->interfaces[$id];

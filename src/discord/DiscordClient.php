@@ -18,9 +18,9 @@ namespace discord;
 
 use discord\module\logger\LoggerModule;
 use discord\module\logger\wrappers\MonologWrapper;
-use discord\socket\DiscordSocketInterface;
+use discord\socket\SocketInterfaceHandler;
 use discord\socket\discord\protocol\OpcodePool;
-use discord\socket\discord\ClientWebSocketSessionAdapter;
+use discord\socket\discord\ClientSocketSession;
 use React\EventLoop\Factory;
 
 /**
@@ -48,10 +48,10 @@ class DiscordClient {
 	/** @var \React\EventLoop\ExtEventLoop|\React\EventLoop\LibEventLoop|\React\EventLoop\LibEvLoop|\React\EventLoop\StreamSelectLoop */
 	private $loop;
 
-	/** @var DiscordSocketInterface */
+	/** @var SocketInterfaceHandler */
 	private $clientSocket;
 
-	/** @var ClientWebSocketSessionAdapter */
+	/** @var ClientSocketSession */
 	private $socketSessionAdapter;
 
 	/**
@@ -69,16 +69,16 @@ class DiscordClient {
 	}
 
 	/**
-	 * @return DiscordSocketInterface
+	 * @return SocketInterfaceHandler
 	 */
-	public function getClientSocket() : DiscordSocketInterface {
+	public function getClientSocket() : SocketInterfaceHandler {
 		return $this->clientSocket;
 	}
 
 	/**
-	 * @return ClientWebSocketSessionAdapter
+	 * @return ClientSocketSession
 	 */
-	public function getSocketSessionAdapter() : ClientWebSocketSessionAdapter {
+	public function getSocketSessionAdapter() : ClientSocketSession {
 		return $this->socketSessionAdapter;
 	}
 
@@ -99,8 +99,8 @@ class DiscordClient {
 		$this->logger->info("Logger enabled!");
 
 		$this->loop = Factory::create();
-		$this->clientSocket = new DiscordSocketInterface($this);
-		$this->socketSessionAdapter = new ClientWebSocketSessionAdapter($this);
+		$this->clientSocket = new SocketInterfaceHandler($this);
+		$this->socketSessionAdapter = new ClientSocketSession($this);
 	}
 
 	/**

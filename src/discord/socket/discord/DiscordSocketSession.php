@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DiscordClientWebSocketSession.php – DiscordPHP
+ * DiscordSocketSession.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -16,29 +16,22 @@
 
 namespace discord\socket\discord;
 
-use discord\DiscordClient;
 use discord\socket\discord\protocol\DispatchPayload;
 use discord\socket\discord\protocol\HeartbeatACKPayload;
 use discord\socket\discord\protocol\HeartbeatPayload;
 use discord\socket\discord\protocol\HelloPayload;
+use discord\socket\discord\protocol\IdentifyPayload;
 use discord\socket\discord\protocol\InvalidSessionPayload;
 use discord\socket\discord\protocol\PayloadData;
 use discord\socket\discord\protocol\ReconnectPayload;
+use discord\socket\discord\protocol\RequestGuildMembersPayload;
+use discord\socket\discord\protocol\ResumePayload;
+use discord\socket\discord\protocol\StatusUpdatePayload;
+use discord\socket\discord\protocol\VoiceStatusUpdatePayload;
 
-class ClientWebSocketSessionAdapter extends WebSocketSession {
+abstract class DiscordSocketSession {
 
-	/** @var DiscordClient */
-	private $client;
-
-	public function __construct(DiscordClient $client) {
-		$this->client = $client;
-	}
-
-	public function handlePayloadData(PayloadData $payload) {
-		if(!$payload->handle($this)) {
-			$this->client->getLogger()->debug("Unhandled " . $payload->getName() . " received: " . json_encode($payload->getPayload()));
-		}
-	}
+	abstract public function handlePayloadData(PayloadData $payload);
 
 	public function handleDispatch(DispatchPayload $payload) : bool {
 		return false;
@@ -48,7 +41,27 @@ class ClientWebSocketSessionAdapter extends WebSocketSession {
 		return false;
 	}
 
+	public function handleIdentify(IdentifyPayload $payload) : bool {
+		return false;
+	}
+
+	public function handleStatusUpdate(StatusUpdatePayload $payload) : bool {
+		return false;
+	}
+
+	public function handleVoiceStatusUpdate(VoiceStatusUpdatePayload $payload) : bool {
+		return false;
+	}
+
+	public function handleResume(ResumePayload $payload) : bool {
+		return false;
+	}
+
 	public function handleReconnect(ReconnectPayload $payload) : bool {
+		return false;
+	}
+
+	public function handleRequestGuildMembers(RequestGuildMembersPayload $payload) : bool {
 		return false;
 	}
 
@@ -57,13 +70,11 @@ class ClientWebSocketSessionAdapter extends WebSocketSession {
 	}
 
 	public function handleHello(HelloPayload $payload) : bool {
-		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->setHeartbeat($payload->heartbeatInterval);
-		return true;
+		return false;
 	}
 
 	public function handleHeartbeatAck(HeartbeatACKPayload $payload) : bool {
-		$this->client->getClientSocket()->getInterface($payload->getConnectionId())->clearHeartbeatAckTimer();
-		return true;
+		return false;
 	}
 
 }

@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\WebSocketSession;
+use discord\socket\discord\DiscordSocketSession;
 
 class HeartbeatPayload extends PayloadData {
 
@@ -33,7 +33,7 @@ class HeartbeatPayload extends PayloadData {
 		$this->payload->d = $this->data;
 	}
 
-	public function handle(WebSocketSession $session) : bool {
+	public function handle(DiscordSocketSession $session) : bool {
 		return $session->handleHeartbeat($this);
 	}
 

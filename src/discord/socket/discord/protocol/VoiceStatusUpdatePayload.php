@@ -16,7 +16,7 @@
 
 namespace discord\socket\discord\protocol;
 
-use discord\socket\discord\WebSocketSession;
+use discord\socket\discord\DiscordSocketSession;
 
 class VoiceStatusUpdatePayload extends PayloadData {
 
@@ -48,7 +48,7 @@ class VoiceStatusUpdatePayload extends PayloadData {
 		$this->payload->self_deaf = $this->deafened;
 	}
 
-	public function handle(WebSocketSession $session) : bool {
+	public function handle(DiscordSocketSession $session) : bool {
 		return $session->handleVoiceStatusUpdate($this);
 	}
 
