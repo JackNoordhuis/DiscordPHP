@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ReconnectPayload.php – DiscordPHP
+ * InvalidSessionPayload.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,24 +14,27 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
-use discord\socket\protocol\WebSocketSession;
+use discord\socket\discord\WebSocketSession;
 
-class ReconnectPayload extends PayloadData {
+class InvalidSessionPayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_RECONNECT;
+	const OPCODE_ID = OpcodeInfo::OP_INVALID_SESSION;
+
+	/** @var bool */
+	public $resumable;
 
 	public function unpack() {
-		// No data is sent in a reconnect payload
+		$this->resumable = $this->payload->d;
 	}
 
 	public function pack() {
-		// No data is sent in a reconnect payload
+		$this->payload->d = $this->payload;
 	}
 
 	public function handle(WebSocketSession $session) : bool {
-		return $session->handleReconnect($this);
+		return $session->handleInvalidSession($this);
 	}
 
 }

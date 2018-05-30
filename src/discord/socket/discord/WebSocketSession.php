@@ -14,20 +14,20 @@
  *
  */
 
-namespace discord\socket\protocol;
+namespace discord\socket\discord;
 
-use discord\socket\protocol\discord\DispatchPayload;
-use discord\socket\protocol\discord\HeartbeatACKPayload;
-use discord\socket\protocol\discord\HeartbeatPayload;
-use discord\socket\protocol\discord\HelloPayload;
-use discord\socket\protocol\discord\IdentifyPayload;
-use discord\socket\protocol\discord\InvalidSessionPayload;
-use discord\socket\protocol\discord\PayloadData;
-use discord\socket\protocol\discord\ReconnectPayload;
-use discord\socket\protocol\discord\RequestGuildMembersPayload;
-use discord\socket\protocol\discord\ResumePayload;
-use discord\socket\protocol\discord\StatusUpdatePayload;
-use discord\socket\protocol\discord\VoiceStatusUpdatePayload;
+use discord\socket\discord\protocol\DispatchPayload;
+use discord\socket\discord\protocol\HeartbeatACKPayload;
+use discord\socket\discord\protocol\HeartbeatPayload;
+use discord\socket\discord\protocol\HelloPayload;
+use discord\socket\discord\protocol\IdentifyPayload;
+use discord\socket\discord\protocol\InvalidSessionPayload;
+use discord\socket\discord\protocol\PayloadData;
+use discord\socket\discord\protocol\ReconnectPayload;
+use discord\socket\discord\protocol\RequestGuildMembersPayload;
+use discord\socket\discord\protocol\ResumePayload;
+use discord\socket\discord\protocol\StatusUpdatePayload;
+use discord\socket\discord\protocol\VoiceStatusUpdatePayload;
 
 abstract class WebSocketSession {
 

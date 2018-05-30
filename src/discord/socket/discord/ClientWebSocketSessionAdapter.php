@@ -14,16 +14,16 @@
  *
  */
 
-namespace discord\socket\protocol;
+namespace discord\socket\discord;
 
 use discord\DiscordClient;
-use discord\socket\protocol\discord\DispatchPayload;
-use discord\socket\protocol\discord\HeartbeatACKPayload;
-use discord\socket\protocol\discord\HeartbeatPayload;
-use discord\socket\protocol\discord\HelloPayload;
-use discord\socket\protocol\discord\InvalidSessionPayload;
-use discord\socket\protocol\discord\PayloadData;
-use discord\socket\protocol\discord\ReconnectPayload;
+use discord\socket\discord\protocol\DispatchPayload;
+use discord\socket\discord\protocol\HeartbeatACKPayload;
+use discord\socket\discord\protocol\HeartbeatPayload;
+use discord\socket\discord\protocol\HelloPayload;
+use discord\socket\discord\protocol\InvalidSessionPayload;
+use discord\socket\discord\protocol\PayloadData;
+use discord\socket\discord\protocol\ReconnectPayload;
 
 class ClientWebSocketSessionAdapter extends WebSocketSession {
 

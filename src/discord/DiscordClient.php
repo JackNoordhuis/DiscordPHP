@@ -19,8 +19,8 @@ namespace discord;
 use discord\module\logger\LoggerModule;
 use discord\module\logger\wrappers\MonologWrapper;
 use discord\socket\DiscordSocketInterface;
-use discord\socket\protocol\discord\OpcodePool;
-use discord\socket\protocol\ClientWebSocketSessionAdapter;
+use discord\socket\discord\protocol\OpcodePool;
+use discord\socket\discord\ClientWebSocketSessionAdapter;
 use React\EventLoop\Factory;
 
 /**

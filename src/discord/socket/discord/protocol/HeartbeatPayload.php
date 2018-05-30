@@ -1,7 +1,7 @@
 <?php
 
 /**
- * InvalidSessionPayload.php – DiscordPHP
+ * HeartbeatPayload.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,27 +14,27 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
-use discord\socket\protocol\WebSocketSession;
+use discord\socket\discord\WebSocketSession;
 
-class InvalidSessionPayload extends PayloadData {
+class HeartbeatPayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_INVALID_SESSION;
+	const OPCODE_ID = OpcodeInfo::OP_HEARTBEAT;
 
-	/** @var bool */
-	public $resumable;
+	/** @var int */
+	public $data;
 
 	public function unpack() {
-		$this->resumable = $this->payload->d;
+		$this->data = $this->payload->d;
 	}
 
 	public function pack() {
-		$this->payload->d = $this->payload;
+		$this->payload->d = $this->data;
 	}
 
 	public function handle(WebSocketSession $session) : bool {
-		return $session->handleInvalidSession($this);
+		return $session->handleHeartbeat($this);
 	}
 
 }

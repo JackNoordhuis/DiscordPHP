@@ -14,10 +14,10 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
-use discord\socket\protocol\DiscordSocketConnection;
-use discord\socket\protocol\WebSocketSession;
+use discord\socket\discord\DiscordSocketConnection;
+use discord\socket\discord\WebSocketSession;
 
 abstract class PayloadData {
 

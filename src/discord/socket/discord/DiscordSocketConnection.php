@@ -14,12 +14,12 @@
  *
  */
 
-namespace discord\socket\protocol;
+namespace discord\socket\discord;
 
 use discord\socket\DiscordSocketInterface;
-use discord\socket\protocol\discord\HeartbeatPayload;
-use discord\socket\protocol\discord\OpcodePool;
-use discord\socket\protocol\discord\PayloadData;
+use discord\socket\discord\protocol\HeartbeatPayload;
+use discord\socket\discord\protocol\OpcodePool;
+use discord\socket\discord\protocol\PayloadData;
 use Ratchet\Client\WebSocket;
 use Ratchet\RFC6455\Messaging\Message;
 use React\EventLoop\Timer\Timer;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * HeartbeatPayload.php – DiscordPHP
+ * ReconnectPayload.php – DiscordPHP
  *
  * Copyright (C) 2015-2017 Jack Noordhuis
  *
@@ -14,27 +14,24 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
-use discord\socket\protocol\WebSocketSession;
+use discord\socket\discord\WebSocketSession;
 
-class HeartbeatPayload extends PayloadData {
+class ReconnectPayload extends PayloadData {
 
-	const OPCODE_ID = OpcodeInfo::OP_HEARTBEAT;
-
-	/** @var int */
-	public $data;
+	const OPCODE_ID = OpcodeInfo::OP_RECONNECT;
 
 	public function unpack() {
-		$this->data = $this->payload->d;
+		// No data is sent in a reconnect payload
 	}
 
 	public function pack() {
-		$this->payload->d = $this->data;
+		// No data is sent in a reconnect payload
 	}
 
 	public function handle(WebSocketSession $session) : bool {
-		return $session->handleHeartbeat($this);
+		return $session->handleReconnect($this);
 	}
 
 }

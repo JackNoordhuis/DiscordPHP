@@ -14,9 +14,9 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
-use discord\socket\protocol\WebSocketSession;
+use discord\socket\discord\WebSocketSession;
 
 class DispatchPayload extends PayloadData {
 

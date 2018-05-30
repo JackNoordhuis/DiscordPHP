@@ -13,7 +13,7 @@
  *
  */
 
-namespace discord\socket\protocol\discord;
+namespace discord\socket\discord\protocol;
 
 interface OpcodeInfo {
 

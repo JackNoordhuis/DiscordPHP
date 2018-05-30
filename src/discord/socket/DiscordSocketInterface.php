@@ -17,7 +17,7 @@
 namespace discord\socket;
 
 use discord\DiscordClient;
-use discord\socket\protocol\DiscordSocketConnection;
+use discord\socket\discord\DiscordSocketConnection;
 use discord\util\Utils;
 use GuzzleHttp\Client as HttpClient;
 use Ratchet\Client\Connector;
